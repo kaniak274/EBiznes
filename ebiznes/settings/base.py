@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
     'ebiznes.apps.common',
     'ebiznes.apps.users',
+    'ebiznes.apps.service',
 ]
 
 MIDDLEWARE = [
