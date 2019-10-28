@@ -45,8 +45,20 @@ export default {
         })
     },
     logout({ commit }) {
-        axios.post('rest-auth/logout/')
+        axios.post('/rest-auth/logout/')
         .then(response => commit('logout'))
         .catch(({ data }) => Toastr.e(data))
     },
+    loadServicePage({ commit }, page = 1) {
+        axios.get(`/api/services/services?page=${page}`)
+        .then(({ data }) => {
+            const { results } = data;
+            commit('setServices', results);
+        })
+        .catch(error => {
+            const { response: { data } } = error;
+
+            commit('setError', data);
+        })
+    }
 }

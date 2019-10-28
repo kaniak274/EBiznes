@@ -13,4 +13,7 @@ export default {
     clearErrors(state) {
         state.errors = {};
     },
+    setServices(state, results) {
+        state.services = results;
+    },
 }
