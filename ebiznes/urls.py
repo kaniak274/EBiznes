@@ -27,6 +27,7 @@ urlpatterns = [
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
 
     path('', include('ebiznes.apps.users.urls')),
+    path('api/services/', include('ebiznes.apps.service.urls')),
 
     path('openapi', get_schema_view(
         title="OpenAPI",
