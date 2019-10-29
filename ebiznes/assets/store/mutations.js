@@ -18,4 +18,7 @@ export default {
         state.services.next = next;
         state.services.previous = previous;
     },
+    setService(state, data) {
+        state.service = data;
+    }
 }

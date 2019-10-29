@@ -6,6 +6,7 @@
                     <th>Name</th>
                     <th>Profession</th>
                     <th>City</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -13,6 +14,7 @@
                     <td>{{ service.name }}</td>
                     <td>{{ service.profession.name }}</td>
                     <td>{{ service.city }}</td>
+                    <td><router-link :to="{ name: 'service-details', params: { id: `${service.pk}` }}">More info</router-link></td>
                 </tr>
             </tbody>
         </table>

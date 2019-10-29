@@ -7,6 +7,8 @@ import Home from './views/Home';
 import Register from './views/Register';
 import Login from './views/Login';
 import ServiceList from './views/ServiceList';
+import ServiceDetails from './views/ServiceDetails';
+import Services from './components/Services';
 
 Vue.use(Router)
 
@@ -16,7 +18,22 @@ const router = new Router({
         { path: '', name: 'home', component: Home },
         { path: '/register/', name: 'register', component: Register },
         { path: '/login/', name: 'login', component: Login },
-        { path: '/services/', name: 'service-list', component: ServiceList },
+        {
+            path: '/services/',
+            component: Services,
+            children: [
+                {
+                    path: '',
+                    name: 'service-list',
+                    component: ServiceList,
+                },
+                {
+                    path: ':id/',
+                    name: 'service-details',
+                    component: ServiceDetails,
+                },
+            ],
+        },
     ],
 });
 

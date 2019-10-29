@@ -60,4 +60,17 @@ export default {
             commit('setError', data);
         })
     },
+    loadSingleService({ commit }, pk) {
+        axios.get(`/api/services/services/${pk}/`)
+        .then(({ data }) => {
+            commit('setService', data)
+        })
+        .catch(error => {
+            const { response: {
+                data
+            }} = error;
+
+            commit('setError', data);
+        })
+    },
 }
