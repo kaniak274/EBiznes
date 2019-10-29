@@ -49,16 +49,15 @@ export default {
         .then(response => commit('logout'))
         .catch(({ data }) => Toastr.e(data))
     },
-    loadServicePage({ commit }, page = 1) {
-        axios.get(`/api/services/services?page=${page}`)
-        .then(({ data }) => {
-            const { results } = data;
-            commit('setServices', results);
-        })
+    loadServicePage({ commit }, url = '/api/services/services/') {
+        axios.get(url)
+        .then(({ data }) => commit('setServices', data))
         .catch(error => {
-            const { response: { data } } = error;
+            const { response: {
+                data
+            }} = error;
 
             commit('setError', data);
         })
-    }
+    },
 }

@@ -13,7 +13,9 @@ export default {
     clearErrors(state) {
         state.errors = {};
     },
-    setServices(state, results) {
-        state.services = results;
+    setServices(state, { next, previous, results }) {
+        state.services.results = results;
+        state.services.next = next;
+        state.services.previous = previous;
     },
 }

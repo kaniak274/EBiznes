@@ -9,13 +9,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="service in services" :key="service.id">
+                <tr v-for="service in services.results" :key="service.id">
                     <td>{{ service.name }}</td>
                     <td>{{ service.profession.name }}</td>
                     <td>{{ service.city }}</td>
                 </tr>
             </tbody>
         </table>
+
+        <button v-if="services.previous" class="btn btn-light" @click="loadPrevious">Previous</button>
+        <button v-if="services.next" class="btn btn-light" @click="loadNext">Next</button>
     </div>
 </template>
 <script>
@@ -29,7 +32,13 @@ export default {
         })
     },
     methods: {
-        ...mapActions(['loadServicePage'])
+        ...mapActions(['loadServicePage']),
+        loadPrevious: function() {
+            this.loadServicePage(this.services.previous);
+        },
+        loadNext: function() {
+            this.loadServicePage(this.services.next);
+        },
     },
     mounted: function() {
         this.loadServicePage();
