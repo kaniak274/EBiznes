@@ -12,12 +12,48 @@ import Services from './components/Services';
 
 Vue.use(Router)
 
+const checkLogged = async (to, from, next) => {
+    await Vue.nextTick();
+    const { getters: { authorizationGranted } } = store;
+
+    if (authorizationGranted) {
+        next({ name: 'home', replace: true });
+    } else {
+        next();
+    }
+}
+
+const checkNotLogged = async (to, from, next) => {
+    await Vue.nextTick();
+    const { getters: { authorizationGranted } } = store;
+
+    if (authorizationGranted) {
+        next();
+    } else {
+        next({ name: 'login', replace: true });
+    }
+}
+
 const router = new Router({
     mode: 'history',
     routes: [
-        { path: '', name: 'home', component: Home },
-        { path: '/register/', name: 'register', component: Register },
-        { path: '/login/', name: 'login', component: Login },
+        {
+            path: '',
+            name: 'home',
+            component: Home
+        },
+        {
+            path: '/register/',
+            name: 'register',
+            component: Register,
+            beforeEnter: checkLogged,
+        },
+        {
+            path: '/login/',
+            name: 'login',
+            component: Login,
+            beforeEnter: checkLogged,
+        },
         {
             path: '/services/',
             component: Services,
