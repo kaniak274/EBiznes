@@ -4,7 +4,6 @@ export default {
         const { [property]: value = [] } = state.errors;
         return value;
     },
-    getAllErrors: state => () => {
-        console.log(state.errors)
-    }
+
+    hasError: ({ errors }) => Object.keys(errors).length,
 }
