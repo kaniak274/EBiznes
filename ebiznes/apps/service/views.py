@@ -1,8 +1,9 @@
 from rest_framework import viewsets
+from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
 
 from .models import *
-from .serializers import ServiceSerializer
+from .serializers import ProfessionSerializer, ServiceSerializer
 
 
 class ServiceViewset(viewsets.ModelViewSet):
@@ -24,4 +25,11 @@ class ServiceViewset(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+
+class ProfessionListView(ListAPIView):
+    queryset = Profession.objects.all().order_by('id')
+    serializer_class = ProfessionSerializer
+    permission_classes = []
+    pagination_class = None
 

@@ -22,8 +22,8 @@ AUTHENTICATION_BACKENDS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        'ebiznes.apps.users.authentication.CsrfExemptSessionAuthentication'
+#        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 100,
@@ -49,7 +49,7 @@ AUTH_USER_MODEL = 'users.User'
 SITE_ID = 1
 REST_USE_JWT = True
 
-REST_SESSION_LOGIN = False
+REST_SESSION_LOGIN = True
 
 LOGIN_URL = '/account/login'
 

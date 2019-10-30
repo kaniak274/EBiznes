@@ -51,7 +51,9 @@ export default {
     },
     loadServicePage({ commit }, url = '/api/services/services/') {
         axios.get(url)
-        .then(({ data }) => commit('setServices', data))
+        .then(({ data }) => {
+            commit('setServices', data);
+        })
         .catch(error => {
             const { response: {
                 data
@@ -63,7 +65,7 @@ export default {
     loadSingleService({ commit }, pk) {
         axios.get(`/api/services/services/${pk}/`)
         .then(({ data }) => {
-            commit('setService', data)
+            commit('setService', data);
         })
         .catch(error => {
             const { response: {
@@ -73,7 +75,7 @@ export default {
             commit('setError', data);
         })
     },
-    createService({ commit }, payload) {
+    createService({ commit, getters }, payload) {
         const { name, description, city, profession_id } = payload;
 
         axios.post('/api/services/services/', {
@@ -81,14 +83,14 @@ export default {
             description,
             city,
             profession_id,
-        })
-        .then(({ data }) => {
+        }, getters.csrfToken)
+        .then((response) => {
             // TODO: Go to your services.
-            console.log(data);
+            console.log(response);
         })
         .catch(error => {
             const { response: { data }} = error;
             commit('setError', data);
         })
-    }
+    },
 }

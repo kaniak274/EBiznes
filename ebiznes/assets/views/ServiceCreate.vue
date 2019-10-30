@@ -36,17 +36,21 @@
 </template>
 <script>
 import { mapActions } from 'vuex';
+import axios from 'axios';
 
 export default {
     name: 'ServiceCreate',
+
     data () {
          return {
              name: '',
              description: '',
              city: '',
              profession_id: '',
+             professions: [],
          }
     },
+
     methods: {
         ...mapActions(['createService']),
         addService: function() {
@@ -58,7 +62,18 @@ export default {
                 city,
                 profession_id
             });
-        }
+        },
+    },
+
+    mounted() {
+        axios.get('/api/services/professions/')
+        .then(({ data }) => {
+            this.professions = data;
+        })
+        .catch(error => {
+            const { response: { data }} = error;
+            this.$toastr.e(data);
+        })
     },
 }
 </script>
