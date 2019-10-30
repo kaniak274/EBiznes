@@ -73,4 +73,22 @@ export default {
             commit('setError', data);
         })
     },
+    createService({ commit }, payload) {
+        const { name, description, city, profession_id } = payload;
+
+        axios.post('/api/services/services/', {
+            name,
+            description,
+            city,
+            profession_id,
+        })
+        .then(({ data }) => {
+            // TODO: Go to your services.
+            console.log(data);
+        })
+        .catch(error => {
+            const { response: { data }} = error;
+            commit('setError', data);
+        })
+    }
 }

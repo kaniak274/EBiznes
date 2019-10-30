@@ -9,6 +9,7 @@ import Login from './views/Login';
 import ServiceList from './views/ServiceList';
 import ServiceDetails from './views/ServiceDetails';
 import Services from './components/Services';
+import ServiceCreate from './views/ServiceCreate';
 
 Vue.use(Router)
 
@@ -68,6 +69,12 @@ const router = new Router({
                     name: 'service-details',
                     component: ServiceDetails,
                 },
+                {
+                    path: 'create/',
+                    name: 'service-create',
+                    component: ServiceCreate,
+                    beforeEnter: checkNotLogged,
+                },
             ],
         },
     ],
@@ -75,7 +82,7 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
     const { state: { errors } } = store;
-    
+
     if (errors.length != 0) {
         store.commit('clearErrors');
     }
