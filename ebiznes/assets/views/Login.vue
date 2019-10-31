@@ -1,22 +1,24 @@
 <template>
     <div>
         Login
-        <b-field label="Login"
-            :type="{ 'is-danger': hasError }">
-            <b-input value="Login" v-model="username"></b-input>
-        </b-field>
+        <form method="POST" onSubmit="return false">
+            <b-field label="Login"
+                :type="{ 'is-danger': hasError }">
+                <b-input value="Login" v-model="username"></b-input>
+            </b-field>
 
-        <errors property='username' />
+            <errors property='username' />
 
-        <b-field label="Password"
-            :type="{ 'is-danger': hasError }">
-            <b-input value="Password" type="password" v-model="password"></b-input>
-        </b-field>
+            <b-field label="Password"
+                :type="{ 'is-danger': hasError }">
+                <b-input value="Password" type="password" v-model="password"></b-input>
+            </b-field>
 
-        <errors property='password' />
-        <errors property='non_field_errors' />
+            <errors property='password' />
+            <errors property='non_field_errors' />
 
-        <button @click="login" class="btn btn-primary mt-2">Login</button>
+            <button @click="login" class="btn btn-primary mt-2">Login</button>
+        </form>
     </div>
 </template>
 <script>

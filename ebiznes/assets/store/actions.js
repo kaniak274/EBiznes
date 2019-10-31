@@ -32,8 +32,8 @@ export default {
             username,
             password,
         })
-        .then(({ data }) => {
-            commit('setUser', data)
+        .then((response) => {
+            commit('setUser', response.data)
             router.push({ name: 'home' });
         })
         .catch(error => {
@@ -44,9 +44,13 @@ export default {
             commit('setError', data);
         })
     },
-    logout({ commit }) {
-        axios.post('/rest-auth/logout/')
-        .then(response => commit('logout'))
+    logout({ commit, getters }) {
+        axios.post('/rest-auth/logout/', {}, getters.axiosConfig)
+        .then(response => {
+            commit('logout');
+
+            document.cookie = 'csrftoken=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        })
         .catch(({ data }) => Toastr.e(data))
     },
     loadServicePage({ commit }, url = '/api/services/services/') {
@@ -83,7 +87,7 @@ export default {
             description,
             city,
             profession_id,
-        }, getters.csrfToken)
+        }, getters.axiosConfig)
         .then((response) => {
             // TODO: Go to your services.
             console.log(response);

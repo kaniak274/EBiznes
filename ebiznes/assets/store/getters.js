@@ -7,25 +7,10 @@ export default {
 
     hasError: ({ errors }) => Object.keys(errors).length,
 
-    csrfToken: state => {
-        var cookieValue = null;
-
-        if (document.cookie && document.cookie !== '') {
-            var cookies = document.cookie.split(';');
-
-            for (var i = 0; i < cookies.length; i++) {
-                var cookie = cookies[i].trim();
-                // Does this cookie string begin with the name we want?
-                if (cookie.substring(0, 'csrftoken'.length + 1) === ('csrftoken=')) {
-                    cookieValue = decodeURIComponent(cookie.substring('csrftoken'.length + 1));
-                    break;
-                }
-            }
-        }
-
+    axiosConfig: state => {
         return {
             headers: {
-                'X-CSRFToken': cookieValue,
+                'Authorization': `JWT ${state.token}`
             },
         }
     },
