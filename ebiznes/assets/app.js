@@ -7,6 +7,7 @@ import store from './store/index'
 
 import Logout from './components/Logout';
 import Errors from './components/Errors';
+import ServiceTable from './components/ServiceTable';
 
 /* Import of file with all translations */
 import i18n from './translations';
@@ -25,6 +26,7 @@ import {
     Autocomplete,
     Upload,
     Icon,
+    Loading,
 } from 'buefy'
 
 import './styles/main.scss';
@@ -36,9 +38,11 @@ Vue.use(Button);
 Vue.use(Autocomplete);
 Vue.use(Upload);
 Vue.use(Icon);
+Vue.use(Loading);
 
 Vue.component('errors', Errors);
 Vue.component('logout', Logout);
+Vue.component('service-table', ServiceTable);
 
 library.add(faUpload, faExclamationCircle, faSearch);
 

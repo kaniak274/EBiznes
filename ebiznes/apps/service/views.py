@@ -12,7 +12,7 @@ from .serializers import ProfessionSerializer, ServiceSerializer
 class ServiceViewset(viewsets.ModelViewSet):
     model = Service
     serializer_class = ServiceSerializer
-    queryset = Service.objects.all().order_by('id').prefetch_related(
+    queryset = Service.objects.all().order_by('-id').prefetch_related(
         'ratings'
     ).select_related('profession')
     filter_backends = [DjangoFilterBackend]

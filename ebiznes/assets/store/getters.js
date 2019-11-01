@@ -29,4 +29,6 @@ export default {
             },
         };
     },
+
+    services: ({ services }) => services,
 }

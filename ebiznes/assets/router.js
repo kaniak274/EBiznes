@@ -10,6 +10,7 @@ import ServiceList from './views/ServiceList';
 import ServiceDetails from './views/ServiceDetails';
 import Services from './components/Services';
 import ServiceCreate from './views/ServiceCreate';
+import UserServices from './views/UserServices';
 
 Vue.use(Router)
 
@@ -75,13 +76,19 @@ const router = new Router({
                     component: ServiceCreate,
                     beforeEnter: checkNotLogged,
                 },
+                {
+                    path: 'your-services/',
+                    name: 'service-user',
+                    component: UserServices,
+                    beforeEnter: checkNotLogged,
+                },
             ],
         },
     ],
 });
 
 router.beforeEach((to, from, next) => {
-    const { state: { errors } } = store;
+    const { state: { errors }} = store;
 
     if (errors.length != 0) {
         store.commit('clearErrors');

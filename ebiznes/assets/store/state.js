@@ -8,4 +8,5 @@ export default {
         previous: '',
     },
     service: {},
+    isLoading: false,
 }

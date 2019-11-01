@@ -25,6 +25,7 @@ export default {
             commit('setError', data);
         })
     },
+
     login({ commit }, payload) {
         const { username, password } = payload;
 
@@ -44,6 +45,7 @@ export default {
             commit('setError', data);
         })
     },
+
     logout({ commit, getters }) {
         axios.post('/rest-auth/logout/', {}, getters.axiosConfig)
         .then(response => {
@@ -53,8 +55,11 @@ export default {
         })
         .catch(({ data }) => Toastr.e(data))
     },
-    loadServicePage({ commit }, url = '/api/services/services/') {
-        axios.get(url)
+
+    async loadServicePage({ commit, state }, url = '/api/services/services/') {
+        state.isLoading = true;
+
+        await axios.get(url)
         .then(({ data }) => {
             commit('setServices', data);
         })
@@ -65,7 +70,10 @@ export default {
 
             commit('setError', data);
         })
+
+        state.isLoading = false;
     },
+
     loadSingleService({ commit }, pk) {
         axios.get(`/api/services/services/${pk}/`)
         .then(({ data }) => {
@@ -79,12 +87,11 @@ export default {
             commit('setError', data);
         })
     },
-    createService({ commit, getters }, payload) {
 
+    createService({ commit, getters }, payload) {
         axios.post('/api/services/services/', payload, getters.axiosConfigFileForm)
         .then((response) => {
-            // TODO: Go to your services.
-            console.log(response);
+            router.push({ name: 'service-user' });
         })
         .catch(error => {
             const { response: { data }} = error;

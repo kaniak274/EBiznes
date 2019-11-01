@@ -9,6 +9,7 @@
             <logout />
             <router-link :to="{ name: 'service-list' }">Services</router-link>
             <router-link :to="{ name: 'service-create' }">Create service</router-link>
+            <router-link :to="{ name: 'service-user' }">Your services</router-link>
         </div>
     </div>
 </template>
