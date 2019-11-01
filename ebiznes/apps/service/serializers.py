@@ -17,7 +17,8 @@ class ServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Service
         fields = ('pk', 'name', 'description', 'owner', 'profession',
-            'profession_id', 'city')
+            'profession_id', 'city', 'street', 'service_logo', 'phone_number',
+            'created')
         extra_kwargs = {
             'owner': {'required': False},
         }

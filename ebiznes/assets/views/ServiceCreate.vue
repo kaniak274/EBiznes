@@ -1,12 +1,16 @@
 <template>
     <div id="ServiceCreate">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-3 mx-auto">
-                    <h1>{{ $t("service.createHeader") }}</h1>
-
-                    <form method="POST" onSubmit="return false">
-                        <b-field>
+            <form method="POST" onSubmit="return false">
+                <div class="row mb-5">
+                    <div class="col-12 text-center">
+                        <h1>{{ $t("service.createHeader") }}</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 mx-auto">
+                        <b-field
+                            :type="{ 'is-danger': hasFieldError('name') }">
                             <b-input
                                 :placeholder="$t('service.nameLabel')"
                                 v-model="name"/>
@@ -14,7 +18,8 @@
 
                         <errors property='name'/>
 
-                        <b-field>
+                        <b-field
+                            :type="{ 'is-danger': hasFieldError('description') }">
                             <b-input
                                 :placeholder="$t('service.descriptionLabel')"
                                 maxlength="200"
@@ -24,7 +29,8 @@
 
                         <errors property='description'/>
 
-                        <b-field>
+                        <b-field
+                            :type="{ 'is-danger': hasFieldError('city') }">
                             <b-input
                                 :placeholder="$t('service.cityLabel')"
                                 v-model="city"/>
@@ -32,13 +38,14 @@
 
                         <errors property='city'/>
 
-                        <b-field>
+                        <b-field
+                            :type="{ 'is-danger': hasFieldError('profession_id') }">
                             <b-autocomplete
                                 :placeholder="$t('service.serviceLabel')"
                                 :open-on-focus="true"
                                 :data="filteredProfessions"
                                 field="name"
-                                @select="option => profession_id = option.pk"
+                                @select="option => professionId = (option || {'pk': ''}).pk"
                                 v-model="professionSelect"/>
                         </b-field>
 
@@ -50,14 +57,53 @@
                             @click="addService">
                             {{ $t('service.createBtn') }}
                         </b-button>
-                    </form>
+                    </div>
+                    <div class="col-4 mx-auto">
+                        <b-field
+                            :type="{ 'is-danger': hasFieldError('service_logo') }">
+                            <b-upload
+                                v-model="logo" drag-drop>
+                                <section class="section">
+                                    <div class="content has-text-centered">
+                                        <p>
+                                            <b-icon
+                                                pack="fas"
+                                                icon="upload"
+                                                size="is-large"/>
+                                        </p>
+                                        <p>{{ $t("service.logoText") }}</p>
+                                    </div>
+                                </section>
+                            </b-upload>
+                        </b-field>
+
+                        <errors property="service_logo"/>
+
+                        <b-field
+                            :type="{ 'is-danger': hasFieldError('street') }">
+                            <b-input
+                                :placeholder="$t('service.streetLabel')"
+                                v-model="street"/>
+                        </b-field>
+
+                        <errors property="street"/>
+
+                        <b-field
+                           :type="{ 'is-danger': hasFieldError('phone_number') }">
+                            <b-input
+                                :placeholder="$t('service.phoneLabel')"
+                                v-model="phoneNumber"/>
+                        </b-field>
+
+                        <errors property="phone_number"/>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </template>
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import axios from 'axios';
 
 export default {
@@ -68,9 +114,12 @@ export default {
              name: '',
              description: '',
              city: '',
-             profession_id: '',
+             professionId: '',
              professions: [],
              professionSelect: '',
+             logo: null,
+             phoneNumber: '',
+             street: '',
          }
     },
 
@@ -80,19 +129,37 @@ export default {
                 profession.name.toLowerCase().includes(this.professionSelect.toLowerCase())
             );
         },
+
+        ...mapGetters(['hasFieldError']),
     },
 
     methods: {
         ...mapActions(['createService']),
         addService: function() {
-            const { name, description, city, profession_id } = this;
-
-            this.createService({
+            const {
                 name,
                 description,
                 city,
-                profession_id
-            });
+                professionId,
+                logo,
+                phoneNumber,
+                street,
+            } = this;
+
+            let formData = new FormData();
+
+            if (logo !== null) {
+                formData.append('service_logo', logo)
+            }
+
+            formData.append('name', name);
+            formData.append('description', description);
+            formData.append('profession_id', professionId);
+            formData.append('phone_number', phoneNumber);
+            formData.append('city', city);
+            formData.append('street', street);
+
+            this.createService(formData);
         },
     },
 

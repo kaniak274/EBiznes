@@ -7,11 +7,26 @@ export default {
 
     hasError: ({ errors }) => Object.keys(errors).length,
 
-    axiosConfig: state => {
+    hasFieldError: ({ errors }) => property => {
+        const { [property]: value = [] } = errors;
+
+        return value.length !== 0;
+    },
+
+    axiosConfig: ({ token }) => {
         return {
             headers: {
-                'Authorization': `JWT ${state.token}`
+                'Authorization': `JWT ${token}`
             },
-        }
+        };
+    },
+
+    axiosConfigFileForm: ({ token }) => {
+        return {
+            headers: {
+                'Authorization': `JWT ${token}`,
+                'Content-Type': 'multipart/form-data',
+            },
+        };
     },
 }

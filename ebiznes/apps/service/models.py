@@ -22,6 +22,9 @@ class Service(TimeStampedModel):
     description = models.TextField(_('Description'), null=True, blank=True)
     city = models.CharField(_('City'), max_length=100)
     profession = models.ForeignKey(Profession, on_delete=models.SET_NULL, blank=True, null=True)
+    service_logo = models.ImageField(_('Service logo'), upload_to="logos/", max_length=255, null=True, blank=True)
+    street = models.CharField(_('Street'), max_length=255, blank=True, null=True)
+    phone_number = models.CharField(_('Phone number'), max_length=30, blank=True, null=True)
 
     def __str__(self):
         return self.name

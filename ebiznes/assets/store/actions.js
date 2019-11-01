@@ -80,14 +80,8 @@ export default {
         })
     },
     createService({ commit, getters }, payload) {
-        const { name, description, city, profession_id } = payload;
 
-        axios.post('/api/services/services/', {
-            name,
-            description,
-            city,
-            profession_id,
-        }, getters.axiosConfig)
+        axios.post('/api/services/services/', payload, getters.axiosConfigFileForm)
         .then((response) => {
             // TODO: Go to your services.
             console.log(response);
@@ -95,6 +89,7 @@ export default {
         .catch(error => {
             const { response: { data }} = error;
             commit('setError', data);
+            console.log(data)
         })
     },
 }
