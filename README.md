@@ -43,3 +43,11 @@ python manage.py createsuperuser
 ```
 
 Then go to localhost:8000/admin and login with created account.
+
+
+### Assets
+Main login images is from:
+```
+https://www.pexels.com/photo/man-in-green-polo-shirt-3084330/
+Photo by Ekrulila from Pexels
+```
