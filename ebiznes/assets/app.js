@@ -13,7 +13,7 @@ import i18n from './translations';
 
 /* Fontawesome */
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faUpload, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUpload, faExclamationCircle, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 /* Import Buefy and used components */
@@ -40,7 +40,7 @@ Vue.use(Icon);
 Vue.component('errors', Errors);
 Vue.component('logout', Logout);
 
-library.add(faUpload, faExclamationCircle)
+library.add(faUpload, faExclamationCircle, faSearch);
 
 Vue.component('vue-fontawesome', FontAwesomeIcon)
 

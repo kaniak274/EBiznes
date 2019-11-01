@@ -1,5 +1,28 @@
 <template>
     <div>
+        <div class="row">
+            <div class="col-4">
+                <b-field>
+                    <b-input
+                        icon="search"
+                        :placeholder="$t('service.cityLabel')"
+                        v-model="citySearch"
+                        @input="search"/>
+                </b-field>
+            </div>
+            <div class="col-4">
+                <b-field>
+                    <b-input
+                        icon="search"
+                        :placeholder="$t('service.serviceLabel')"
+                        v-model="professionSearch"
+                        @input="search"/>
+                </b-field>
+            </div>
+            <div class="col-4">
+                
+            </div>
+        </div>
         <table class="table">
             <thead>
                 <tr>
@@ -28,11 +51,20 @@ import { mapActions, mapState } from 'vuex';
 
 export default {
     name: 'ServiceList',
+
+    data () {
+        return {
+            citySearch: '',
+            professionSearch: '',
+        }
+    },
+
     computed: {
         ...mapState({
             services: state => state.services,
         })
     },
+
     methods: {
         ...mapActions(['loadServicePage']),
         loadPrevious: function() {
@@ -41,7 +73,16 @@ export default {
         loadNext: function() {
             this.loadServicePage(this.services.next);
         },
+        search: function() {
+            const { citySearch, professionSearch } = this;
+            let params = new URLSearchParams();
+            params.append('city', citySearch);
+            params.append('profession', professionSearch);
+
+            this.loadServicePage(`/api/services/services/?${params.toString()}`);
+        }
     },
+
     mounted: function() {
         this.loadServicePage();
     },

@@ -4,9 +4,10 @@ from .models import *
 
 
 class ServiceFilter(filters.FilterSet):
-    professions = filters.CharFilter(field_name='profession__name', lookup_expr='icontains')
+    profession = filters.CharFilter(field_name='profession__name', lookup_expr='icontains')
+    city = filters.CharFilter(field_name='city', lookup_expr='icontains')
 
     class Meta:
         model = Service
-        fields = ['owner', 'professions', 'city']
+        fields = ['owner', 'profession', 'city']
 
