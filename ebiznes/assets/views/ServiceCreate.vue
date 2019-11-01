@@ -1,39 +1,59 @@
 <template>
-    <div>
-        Create service
+    <div id="ServiceCreate">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-3 mx-auto">
+                    <h1>{{ $t("service.createHeader") }}</h1>
 
-        <input
-            type="text"
-            class="form-control"
-            placeholder="Name"
-            v-model="name">
-        <errors property='name' />
+                    <form method="POST" onSubmit="return false">
+                        <b-field>
+                            <b-input
+                                :placeholder="$t('service.nameLabel')"
+                                v-model="name"/>
+                        </b-field>
 
-        <textarea
-            class="form-control"
-            placeholder="Description..."
-            v-model="description"></textarea>
-        <errors property='description' />
+                        <errors property='name'/>
 
-        <input
-            type="text"
-            class="form-control"
-            placeholder="City"
-            v-model="city">
-        <errors property='city' />
+                        <b-field>
+                            <b-input
+                                :placeholder="$t('service.descriptionLabel')"
+                                maxlength="200"
+                                type="textarea"
+                                v-model="description"/>
+                        </b-field>
 
-        <b-field label="Service type">
-            <b-autocomplete
-                v-model="professionSelect"
-                :open-on-focus="true"
-                :data="filteredProfessions"
-                field="name"
-                @select="option => profession_id = option.pk" />
-        </b-field>
-        <errors property='profession_id' />
-        <errors property='non_field_errors' />
+                        <errors property='description'/>
 
-        <button @click="addService" class="btn btn-primary mt-2">Create</button>
+                        <b-field>
+                            <b-input
+                                :placeholder="$t('service.cityLabel')"
+                                v-model="city"/>
+                        </b-field>
+
+                        <errors property='city'/>
+
+                        <b-field>
+                            <b-autocomplete
+                                :placeholder="$t('service.serviceLabel')"
+                                :open-on-focus="true"
+                                :data="filteredProfessions"
+                                field="name"
+                                @select="option => profession_id = option.pk"
+                                v-model="professionSelect"/>
+                        </b-field>
+
+                        <errors property='profession_id'/>
+                        <errors property='non_field_errors'/>
+
+                        <b-button
+                            type="is-primary is-medium"
+                            @click="addService">
+                            {{ $t('service.createBtn') }}
+                        </b-button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
