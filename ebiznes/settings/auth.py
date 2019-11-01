@@ -26,7 +26,7 @@ REST_FRAMEWORK = {
         'ebiznes.apps.users.authentication.CsrfExemptSessionAuthentication',
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 100,
+    'PAGE_SIZE': 50,
 }
 
 JWT_AUTH = {
