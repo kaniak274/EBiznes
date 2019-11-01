@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework_jwt',
 
+    'django_filters',
+
     # Authentication packages
     'allauth',
     'allauth.account',

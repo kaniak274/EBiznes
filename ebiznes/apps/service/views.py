@@ -1,7 +1,10 @@
+from django_filters.rest_framework import DjangoFilterBackend
+
 from rest_framework import viewsets
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
 
+from .filters import *
 from .models import *
 from .serializers import ProfessionSerializer, ServiceSerializer
 
@@ -12,6 +15,8 @@ class ServiceViewset(viewsets.ModelViewSet):
     queryset = Service.objects.all().order_by('id').prefetch_related(
         'ratings'
     ).select_related('profession')
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = ServiceFilter
 
     def get_permissions(self):
         actions = ['create', 'update', 'partial_update']
