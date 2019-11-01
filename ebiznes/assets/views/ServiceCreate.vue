@@ -22,12 +22,14 @@
             v-model="city">
         <errors property='city' />
 
-        <!-- TODO: ADD SELECT OR AUTOCOMPLETE INPUT -->
-        <input
-            type="text"
-            class="form-control"
-            placeholder="Service type"
-            v-model="profession_id">
+        <b-field label="Service type">
+            <b-autocomplete
+                v-model="professionSelect"
+                :open-on-focus="true"
+                :data="filteredProfessions"
+                field="name"
+                @select="option => profession_id = option.pk" />
+        </b-field>
         <errors property='profession_id' />
         <errors property='non_field_errors' />
 
@@ -48,7 +50,16 @@ export default {
              city: '',
              profession_id: '',
              professions: [],
+             professionSelect: '',
          }
+    },
+
+    computed: {
+        filteredProfessions() {
+            return this.professions.filter(profession =>
+                profession.name.toLowerCase().includes(this.professionSelect.toLowerCase())
+            );
+        },
     },
 
     methods: {

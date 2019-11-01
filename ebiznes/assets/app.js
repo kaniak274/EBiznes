@@ -17,6 +17,7 @@ import {
     Button,
     Field,
     Input,
+    Autocomplete,
 } from 'buefy'
 
 import './styles/main.scss';
@@ -25,6 +26,7 @@ Vue.use(Toastr);
 Vue.use(Field);
 Vue.use(Input);
 Vue.use(Button);
+Vue.use(Autocomplete);
 
 Vue.component('errors', Errors);
 Vue.component('logout', Logout);
