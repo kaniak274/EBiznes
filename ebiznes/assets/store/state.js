@@ -9,4 +9,5 @@ export default {
     },
     service: {},
     isLoading: false,
+    displaySnackbar: false,
 }

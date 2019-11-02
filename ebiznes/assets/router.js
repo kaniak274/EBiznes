@@ -11,6 +11,7 @@ import ServiceDetails from './views/ServiceDetails';
 import Services from './components/Services';
 import ServiceCreate from './views/ServiceCreate';
 import UserServices from './views/UserServices';
+import ServiceEdit from './views/ServiceEdit';
 
 Vue.use(Router)
 
@@ -80,6 +81,12 @@ const router = new Router({
                     path: 'your-services/',
                     name: 'service-user',
                     component: UserServices,
+                    beforeEnter: checkNotLogged,
+                },
+                {
+                    path: 'edit/:id/',
+                    name: 'service-edit',
+                    component: ServiceEdit,
                     beforeEnter: checkNotLogged,
                 },
             ],
