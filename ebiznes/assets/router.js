@@ -66,7 +66,7 @@ const router = new Router({
                     component: ServiceList,
                 },
                 {
-                    path: ':id/',
+                    path: 'detail/:id/',
                     name: 'service-details',
                     component: ServiceDetails,
                 },

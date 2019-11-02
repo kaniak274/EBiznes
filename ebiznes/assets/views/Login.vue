@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-3 login-form mx-auto">
+                <div class="col-3 login-form mx-auto" v-if="showLogin">
                     <h1> {{ $t("message.loginPage") }} </h1>
                     <p class="login-text"> {{ $t("message.loginText") }} </p>
                     <form method="POST" onSubmit="return false">
@@ -54,14 +54,27 @@
 
                         <div class="row">
                             <div class="col-12 mt-3">
-                                <router-link
-                                    to="/">
+                                <router-link to="#" @click.native="reset">
                                     {{ $t('message.forgetPassword') }}
                                 </router-link>
                             </div>
                         </div>
                     </form>
+
                 </div>
+                <div class="col-3 login-form mx-auto" v-else>
+                    <h1> {{ $t("message.resetPage") }} </h1>
+
+                    <password-reset/>
+
+                    <div class="row">
+                        <div class="col-12 mt-3">
+                            <router-link to="#" @click.native="reset">
+                                {{ $t('message.back') }}
+                            </router-link>
+                        </div>                        
+                    </div>
+               </div>
             </div>
         </div>
     </div>
@@ -75,6 +88,7 @@ export default {
         return {
             username: '',
             password: '',
+            showLogin: true,
         }
     },
 
@@ -89,6 +103,10 @@ export default {
         login: function() {
             const { username, password } = this;
             this.loginUser({ username, password });
+        },
+        reset: function() {
+            this.showLogin = !this.showLogin;
+            this.$store.commit('clearErrors');
         }
     }
 }

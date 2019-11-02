@@ -8,6 +8,7 @@ import store from './store/index'
 import Logout from './components/Logout';
 import Errors from './components/Errors';
 import ServiceTable from './components/ServiceTable';
+import PasswordReset from './components/PasswordReset';
 
 /* Import of file with all translations */
 import i18n from './translations';
@@ -43,6 +44,7 @@ Vue.use(Loading);
 Vue.component('errors', Errors);
 Vue.component('logout', Logout);
 Vue.component('service-table', ServiceTable);
+Vue.component('password-reset', PasswordReset);
 
 library.add(faUpload, faExclamationCircle, faSearch);
 

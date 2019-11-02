@@ -16,13 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from django.urls import include, path
+from django.urls import include, path, re_path
 from django.views.generic import TemplateView
+
 from rest_framework.renderers import JSONOpenAPIRenderer
 from rest_framework.schemas import get_schema_view
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('rest-auth/', include('rest_auth.urls')),
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
 

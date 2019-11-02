@@ -17,6 +17,10 @@ const i18n = new VueI18n({
                 forgetPassword: 'I forget password',
                 noAccount: 'Don\'t have an account?',
                 registerFromLogin: 'CREATE NEW ONE',
+                emailLabel: 'E-mail',
+                resetBtn: 'Reset password',
+                back: 'Back',
+                resetPage: 'Password reset',
             },
             service: {
                 createHeader: 'Create your service',
@@ -40,6 +44,10 @@ const i18n = new VueI18n({
                 forgetPassword: 'Zapomniałem hasła',
                 noAccount: 'Nie masz jeszcze konta?',
                 registerFromLogin: 'STWÓRZ NOWE',
+                emailLabel: 'Adres e-mail',
+                resetBtn: 'Zresetuj hasło',
+                back: 'Powrót',
+                resetPage: 'Reset hasła',
             },
             service: {
                 createHeader: 'Dodaj usługę',
