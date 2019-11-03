@@ -6,8 +6,7 @@
                     <dir class="row">
                         <div class="col-6">
                             <div class="logo-col">
-                                <img src="../../assets/images/logo.png" alt="">
-                                <h1>Perfect Work</h1>
+                                <h1>Service Rent</h1>
                             </div>
                         </div>
                         <div class="col-6">
