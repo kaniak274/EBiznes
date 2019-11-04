@@ -2,33 +2,42 @@
     <div>
         <b-loading :active.sync="isLoading"/>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Profession</th>
-                    <th>City</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="service in services.results" :key="service.id">
-                    <td>{{ service.name }}</td>
-                    <td>{{ service.profession.name }}</td>
-                    <td>{{ service.city }}</td>
+        <div class="grid-start">
+            <div class="service-grid" v-for="service in services.results" :key="service.id">
+                <div class="logo">
+                    <!-- TODO EMPTY IMAGE -->
+                    <img
+                        class="img-fluid rounded"
+                        :src="service.service_logo"/>
+                </div>
+                <div class="name">
+                    <router-link
+                        v-if="isAll"
+                        :to="{ name: 'service-details', params: { id: `${service.pk}` }}"
+                        >{{ service.name }}</router-link>
+                    <router-link
+                        v-else
+                        :to="{ name: 'service-edit', params: { id: `${service.pk}` }}"
+                        >{{ service.name }}</router-link>
+                </div>
+                <div class="info">
+                    <div class="profession">
+                        {{ $t('service.serviceLabel') }}: {{ service.profession.name }}
+                    </div>
+                    <div class="city">
+                        {{ $t('service.cityLabel') }}: {{ service.city }}
+                    </div>
+                </div>  
+                <div class="rating">
+                    Rating
+                </div>
+            </div>
+        </div>
 
-                    <td v-if="isAll">
-                        <router-link :to="{ name: 'service-details', params: { id: `${service.pk}` }}">More info</router-link>
-                    </td>
-                    <td v-else>
-                        <router-link :to="{ name: 'service-edit', params: { id: `${service.pk}` }}">Edit</router-link>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <button v-if="services.previous" class="btn btn-light" @click="loadPrevious">Previous</button>
-        <button v-if="services.next" class="btn btn-light" @click="loadNext">Next</button>
+        <div class="float-right">
+            <button v-if="services.previous" class="btn btn-light" @click="loadPrevious">Previous</button>
+            <button v-if="services.next" class="btn btn-light" @click="loadNext">Next</button>
+        </div>
     </div>
 </template>
 <script>

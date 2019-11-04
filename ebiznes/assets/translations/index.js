@@ -48,6 +48,15 @@ const i18n = new VueI18n({
                 editBtn: 'Edit service',
                 editSuccess: 'Service has been updated.',
                 editHeader: 'Edit service',
+                serviceListHeader: 'Service list',
+                options: {
+                    all: 'All',
+                    more1: 'More than one star',
+                    more2: 'More than two stars',
+                    more3: 'More than three stars',
+                    more4: 'More than four stars',
+                    five: 'Five stars',
+                },
             },
             navbar: {
                 home: 'Home',
@@ -99,6 +108,15 @@ const i18n = new VueI18n({
                 editBtn: 'Edytuj usługę',
                 editSuccess: 'Usługa została zmieniona.',
                 editHeader: 'Edycja usługi',
+                serviceListHeader: 'Lista usług dostępnych w serwisie',
+                options: {
+                    all: 'Wszystkie',
+                    more1: 'Więcej niż jedna gwiazdka',
+                    more2: 'Więcej niż dwie gwiazdki',
+                    more3: 'Więcej niż trzy gwiazdki',
+                    more4: 'Więcej niż cztery gwiazdki',
+                    five: 'Pięć gwiazdek',
+                },
             },
             navbar: {
                 home: 'Strona główna',

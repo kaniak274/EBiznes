@@ -1,0 +1,44 @@
+#ServiceList {
+    .header-section {
+        margin-top: 1em;
+        margin-bottom: 4em;
+        text-align: center;
+
+        h1 {
+            font-size: 2em;
+        }
+    }
+}
+
+.grid-start {
+    margin-top: 2em;
+
+    .service-grid {
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+
+        .logo {
+            grid-area: 1 / 2 / 3 / 4;
+            margin-right: 1em;
+        }
+
+        .name {
+            font-size: 2.5em;
+            grid-area: 1 / 4 / 1 / 9;
+        }
+
+        .info {
+            grid-area: 2 / 4 / 2 / 6;
+            align-self: end;
+        }
+
+        .rating {
+            grid-area: 2 / 6 / 2 / 8;
+            align-self: end;
+        }
+    }
+}
+

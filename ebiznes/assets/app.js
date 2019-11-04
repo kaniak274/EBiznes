@@ -30,6 +30,7 @@ import {
     Icon,
     Loading,
     Navbar,
+    Select,
 } from 'buefy'
 
 import './styles/main.scss';
@@ -43,6 +44,7 @@ Vue.use(Upload);
 Vue.use(Icon);
 Vue.use(Loading);
 Vue.use(Navbar);
+Vue.use(Select);
 
 Vue.component('errors', Errors);
 Vue.component('logout', Logout);
