@@ -1,9 +1,61 @@
 <template>
     <div>
+        <b-navbar v-if="authorizationGranted" type="is-dark">
+            <template slot="brand">
+                Service rent
+            </template>
+            <template slot="start">
+                <b-navbar-item tag="router-link" :to="{ name: 'service-list' }">
+                    {{ $t('navbar.home') }}
+                </b-navbar-item>
+                <b-navbar-item tag="router-link" :to="{ name: 'service-create' }">
+                    {{ $t('navbar.createService') }}
+                </b-navbar-item>
+                <b-navbar-item tag="router-link" :to="{ name: 'service-user' }">
+                    {{ $t('navbar.yourService') }}
+                </b-navbar-item>
+            </template>
+
+            <template slot="end">
+                <b-navbar-dropdown :label="$t('navbar.yourAccount')">
+                    <b-navbar-item tag="router-link" :to="{ name: 'password-change' }">
+                        {{ $t('navbar.changePassword') }}
+                    </b-navbar-item>
+                    <b-navbar-item tag="div">
+                        <logout/>
+                    </b-navbar-item>
+                </b-navbar-dropdown>
+            </template>
+        </b-navbar>
+
+        <!--<b-navbar v-else>
+            <template slot="brand">
+                Service rent
+            </template>
+            <template slot="start">
+                <b-navbar-item tag="router-link" :to="{ name: 'home' }">
+                    Home
+                </b-navbar-item>
+                <b-navbar-item tag="router-link" :to="{ name: 'register' }">
+                    Register
+                </b-navbar-item>
+                <b-navbar-item tag="router-link" :to="{ name: 'login' }">
+                    Login
+                </b-navbar-item>
+            </template>
+        </b-navbar>-->
+
         <router-view />
     </div>
 </template>
-
 <script>
-export default {};
+import { mapGetters } from 'vuex';
+
+export default {
+    name: 'App',
+
+    computed: {
+        ...mapGetters(['authorizationGranted']),
+    },
+};
 </script>

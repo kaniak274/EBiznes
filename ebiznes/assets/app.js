@@ -29,6 +29,7 @@ import {
     Upload,
     Icon,
     Loading,
+    Navbar,
 } from 'buefy'
 
 import './styles/main.scss';
@@ -41,6 +42,7 @@ Vue.use(Autocomplete);
 Vue.use(Upload);
 Vue.use(Icon);
 Vue.use(Loading);
+Vue.use(Navbar);
 
 Vue.component('errors', Errors);
 Vue.component('logout', Logout);

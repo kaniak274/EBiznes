@@ -21,7 +21,7 @@ const checkLogged = async (to, from, next) => {
     const { getters: { authorizationGranted } } = store;
 
     if (authorizationGranted) {
-        next({ name: 'home', replace: true });
+        next({ name: 'service-list', replace: true });
     } else {
         next();
     }

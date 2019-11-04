@@ -49,6 +49,14 @@ const i18n = new VueI18n({
                 editSuccess: 'Service has been updated.',
                 editHeader: 'Edit service',
             },
+            navbar: {
+                home: 'Home',
+                createService: 'Create service',
+                yourService: 'Your service',
+                changePassword: 'Change password',
+                yourAccount: 'Your account',
+                logout: 'Logout',
+            },
         },
         pl: {
             message: {
@@ -91,6 +99,14 @@ const i18n = new VueI18n({
                 editBtn: 'Edytuj usługę',
                 editSuccess: 'Usługa została zmieniona.',
                 editHeader: 'Edycja usługi',
+            },
+            navbar: {
+                home: 'Strona główna',
+                createService: 'Stwórz usługe',
+                yourService: 'Twoje usługi',
+                changePassword: 'Zmień hasło',
+                yourAccount: 'Twoje konto',
+                logout: 'Wyloguj',
             },
         },
     },

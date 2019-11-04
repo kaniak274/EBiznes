@@ -8,7 +8,7 @@ export default {
         axios.post('/rest-auth/registration/', payload)
         .then(({ data }) => {
             commit('setUser', data)
-            router.push({ name: 'home' });
+            router.push({ name: 'service-list' });
         })
         .catch(error => {
             const { response: {
@@ -28,7 +28,7 @@ export default {
         })
         .then((response) => {
             commit('setUser', response.data)
-            router.push({ name: 'home' });
+            router.push({ name: 'service-list' });
         })
         .catch(error => {
             const { response: {
@@ -43,8 +43,7 @@ export default {
         axios.post('/rest-auth/logout/', {}, getters.axiosConfig)
         .then(response => {
             commit('logout');
-
-            document.cookie = 'csrftoken=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            router.push({ name: 'login' });
         })
         .catch(({ data }) => Toastr.e(data))
     },

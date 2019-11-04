@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button class="btn btn-danger" @click="logout">Logout</button>
+        <button class="btn btn-danger" @click="logout">{{ $t('navbar.logout') }}</button>
     </div>
 </template>
 <script>
