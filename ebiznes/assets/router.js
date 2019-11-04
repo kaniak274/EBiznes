@@ -12,6 +12,7 @@ import Services from './components/Services';
 import ServiceCreate from './views/ServiceCreate';
 import UserServices from './views/UserServices';
 import ServiceEdit from './views/ServiceEdit';
+import PasswordChange from './views/PasswordChange';
 
 Vue.use(Router)
 
@@ -56,6 +57,12 @@ const router = new Router({
             name: 'login',
             component: Login,
             beforeEnter: checkLogged,
+        },
+        {
+            path: '/password-change/',
+            name: 'password-change',
+            component: PasswordChange,
+            beforeEnter: checkNotLogged,
         },
         {
             path: '/services/',

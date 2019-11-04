@@ -10,6 +10,7 @@
             <router-link :to="{ name: 'service-list' }">Services</router-link>
             <router-link :to="{ name: 'service-create' }">Create service</router-link>
             <router-link :to="{ name: 'service-user' }">Your services</router-link>
+            <router-link :to="{ name: 'password-change' }">Change password</router-link>
         </div>
     </div>
 </template>

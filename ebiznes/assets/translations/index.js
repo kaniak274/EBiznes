@@ -21,6 +21,11 @@ const i18n = new VueI18n({
                 resetBtn: 'Reset password',
                 back: 'Back',
                 resetPage: 'Password reset',
+                newPassword1: 'New password',
+                newPassword2: 'Confirm new password',
+                oldPassword: 'Old password',
+                changePasswordBtn: 'Change password',
+                changePasswordSuccess: 'Password has been changed.',
             },
             service: {
                 createHeader: 'Create your service',
@@ -51,6 +56,11 @@ const i18n = new VueI18n({
                 resetBtn: 'Zresetuj hasło',
                 back: 'Powrót',
                 resetPage: 'Reset hasła',
+                newPassword1: 'Nowe hasło',
+                newPassword2: 'Potwierdź nowe hasło',
+                oldPassword: 'Stare hasło',
+                changePasswordBtn: 'Zmień hasło',
+                changePasswordSuccess: 'Hasło zostało zmienione.',
             },
             service: {
                 createHeader: 'Dodaj usługę',
