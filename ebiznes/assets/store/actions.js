@@ -5,14 +5,7 @@ import router from './../router';
 
 export default {
     register({ commit }, payload) {
-        const { username, password1, password2, email } = payload;
-
-        axios.post('/rest-auth/registration/', {
-            username,
-            password1,
-            password2,
-            email,
-        })
+        axios.post('/rest-auth/registration/', payload)
         .then(({ data }) => {
             commit('setUser', data)
             router.push({ name: 'home' });
