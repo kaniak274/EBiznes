@@ -1,6 +1,8 @@
-#ServiceList {
+html, body {
     background-color: #f2f2f2;
+}
 
+#ServiceList {
     .header-section {
         margin-top: 1em;
         margin-bottom: 4em;
@@ -21,7 +23,7 @@
             margin-left: auto;
             margin-right: auto;
             margin-bottom: 2em;
-            width: 50%;
+            width: 80%;
             border-radius: 10px;
             border: 2px solid black;
             display: grid;
@@ -56,3 +58,32 @@
     }
 }
 
+@media only screen and (min-width : 1024px) {
+    .grid-start {
+        .service-grid {
+            .service-content {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width : 1224px) {
+    .grid-start {
+        .service-grid {
+            .service-content {
+                width: 80%;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width : 1824px) {
+    .grid-start {
+        .service-grid {
+            .service-content {
+                width: 50%;
+            }
+        }
+    }
+}

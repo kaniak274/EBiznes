@@ -9,7 +9,7 @@
             <div class="col-4">
                 <b-field>
                     <b-input
-                        icon="search"
+                        icon="magnify"
                         :placeholder="$t('service.serviceLabel')"
                         v-model="professionSearch"
                         @input="search"/>
@@ -18,7 +18,7 @@
             <div class="col-4">
                 <b-field>
                     <b-input
-                        icon="search"
+                        icon="magnify"
                         :placeholder="$t('service.cityLabel')"
                         v-model="citySearch"
                         @input="search"/>
