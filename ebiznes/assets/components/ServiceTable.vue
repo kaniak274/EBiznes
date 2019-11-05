@@ -34,7 +34,14 @@
                         </div>
                     </div>  
                     <div class="rating">
-                        Rating
+                        <section>
+                            <b-rate
+                                :custom-text="service.rate.toString()"
+                                v-model="service.rate"
+                                :disabled="true"
+                                :spaced="true"
+                                size="is-medium"/>
+                        </section>
                     </div>
                 </div>
             </div>

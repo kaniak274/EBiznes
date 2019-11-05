@@ -18,7 +18,7 @@ class ServiceSerializer(serializers.ModelSerializer):
         model = Service
         fields = ('pk', 'name', 'description', 'owner', 'profession',
             'profession_id', 'city', 'street', 'service_logo', 'phone_number',
-            'created')
+            'created', 'rate')
         extra_kwargs = {
             'owner': {'required': False},
         }

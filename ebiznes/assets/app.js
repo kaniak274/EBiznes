@@ -16,7 +16,12 @@ import i18n from './translations';
 
 /* Fontawesome */
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faUpload, faExclamationCircle, faSearch } from '@fortawesome/free-solid-svg-icons';
+import {
+    faUpload,
+    faExclamationCircle,
+    faSearch,
+    faStar,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 /* Import Buefy and used components */
@@ -31,6 +36,7 @@ import {
     Loading,
     Navbar,
     Select,
+    Rate,
 } from 'buefy'
 
 import './styles/main.scss';
@@ -45,6 +51,7 @@ Vue.use(Icon);
 Vue.use(Loading);
 Vue.use(Navbar);
 Vue.use(Select);
+Vue.use(Rate);
 
 Vue.component('errors', Errors);
 Vue.component('logout', Logout);
@@ -52,7 +59,7 @@ Vue.component('service-table', ServiceTable);
 Vue.component('password-reset', PasswordReset);
 Vue.component('service-form', ServiceForm);
 
-library.add(faUpload, faExclamationCircle, faSearch);
+library.add(faUpload, faExclamationCircle, faSearch, faStar);
 
 Vue.component('vue-fontawesome', FontAwesomeIcon)
 
