@@ -4,36 +4,38 @@
 
         <div class="grid-start">
             <div class="service-grid" v-for="service in services.results" :key="service.id">
-                <div class="logo">
-                    <img
-                        v-if="service.service_logo"
-                        class="img-fluid rounded"
-                        :src="service.service_logo"/>
-                    <img
-                        v-else
-                        class="img-fluid rounded"
-                        src="../images/placeholder-image.jpg"/>
-                </div>
-                <div class="name">
-                    <router-link
-                        v-if="isAll"
-                        :to="{ name: 'service-details', params: { id: `${service.pk}` }}"
-                        >{{ service.name }}</router-link>
-                    <router-link
-                        v-else
-                        :to="{ name: 'service-edit', params: { id: `${service.pk}` }}"
-                        >{{ service.name }}</router-link>
-                </div>
-                <div class="info">
-                    <div class="profession">
-                        {{ $t('service.serviceLabel') }}: {{ service.profession.name }}
+                <div class="service-content">
+                    <div class="logo">
+                        <img
+                            v-if="service.service_logo"
+                            class="img-fluid rounded"
+                            :src="service.service_logo"/>
+                        <img
+                            v-else
+                            class="img-fluid rounded"
+                            src="../images/placeholder-image.jpg"/>
                     </div>
-                    <div class="city">
-                        {{ $t('service.cityLabel') }}: {{ service.city }}
+                    <div class="name">
+                        <router-link
+                            v-if="isAll"
+                            :to="{ name: 'service-details', params: { id: `${service.pk}` }}"
+                            >{{ service.name }}</router-link>
+                        <router-link
+                            v-else
+                            :to="{ name: 'service-edit', params: { id: `${service.pk}` }}"
+                            >{{ service.name }}</router-link>
                     </div>
-                </div>  
-                <div class="rating">
-                    Rating
+                    <div class="info">
+                        <div class="profession">
+                            {{ $t('service.serviceLabel') }}: {{ service.profession.name }}
+                        </div>
+                        <div class="city">
+                            {{ $t('service.cityLabel') }}: {{ service.city }}
+                        </div>
+                    </div>  
+                    <div class="rating">
+                        Rating
+                    </div>
                 </div>
             </div>
         </div>
