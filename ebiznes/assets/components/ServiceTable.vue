@@ -5,10 +5,14 @@
         <div class="grid-start">
             <div class="service-grid" v-for="service in services.results" :key="service.id">
                 <div class="logo">
-                    <!-- TODO EMPTY IMAGE -->
                     <img
+                        v-if="service.service_logo"
                         class="img-fluid rounded"
                         :src="service.service_logo"/>
+                    <img
+                        v-else
+                        class="img-fluid rounded"
+                        src="../images/placeholder-image.jpg"/>
                 </div>
                 <div class="name">
                     <router-link

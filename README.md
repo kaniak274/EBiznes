@@ -57,3 +57,8 @@ Register image:
 https://www.pexels.com/photo/construction-wall-house-door-64609/
 Photo by Caio Resende from Pexels
 ```
+
+Placeholder image:
+```
+https://icon-library.net/icon/placeholder-image-icon-7.html
+```
