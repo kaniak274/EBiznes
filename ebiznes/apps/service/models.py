@@ -31,6 +31,7 @@ class Service(TimeStampedModel):
 
     @property
     def rate(self):
+        ### TODO: ADD RATING CALCULATION HERE
         return 2.5
 
 
