@@ -14,10 +14,7 @@ import ServiceForm from './components/ServiceForm';
 /* Import of file with all translations */
 import i18n from './translations';
 
-/* Fontawesome */
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faUpload, faExclamationCircle, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import '@mdi/font/scss/materialdesignicons.scss';
 
 /* Import Buefy and used components */
 import 'buefy/dist/buefy.css'
@@ -30,6 +27,8 @@ import {
     Icon,
     Loading,
     Navbar,
+    Select,
+    Rate,
 } from 'buefy'
 
 import './styles/main.scss';
@@ -43,22 +42,14 @@ Vue.use(Upload);
 Vue.use(Icon);
 Vue.use(Loading);
 Vue.use(Navbar);
+Vue.use(Select);
+Vue.use(Rate);
 
 Vue.component('errors', Errors);
 Vue.component('logout', Logout);
 Vue.component('service-table', ServiceTable);
 Vue.component('password-reset', PasswordReset);
 Vue.component('service-form', ServiceForm);
-
-library.add(faUpload, faExclamationCircle, faSearch);
-
-Vue.component('vue-fontawesome', FontAwesomeIcon)
-
-import Buefy from 'buefy';
-Vue.use(Buefy, {
-    defaultIconComponent: 'vue-fontawesome',
-    defaultIconPack: 'fas',
-});
 
 var app = new Vue({
     el: '#app',

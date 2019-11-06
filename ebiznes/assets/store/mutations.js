@@ -32,4 +32,8 @@ export default {
     clearServices(state) {
         state.services = {};
     },
+
+    stopLoading(state) {
+        state.isLoading = false;
+    },
 }

@@ -78,7 +78,6 @@
                                     <div class="content has-text-centered">
                                         <p>
                                             <b-icon
-                                                pack="fas"
                                                 icon="upload"
                                                 size="is-large"/>
                                         </p>

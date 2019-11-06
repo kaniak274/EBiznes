@@ -117,3 +117,4 @@ venv.bak/
 *.swp
 
 db.py
+/ebiznes/uploads/*

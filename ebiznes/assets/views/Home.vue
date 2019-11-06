@@ -19,8 +19,13 @@ import { mapGetters } from 'vuex';
 
 export default {
     name: 'Home',
+
     computed: {
         ...mapGetters(['authorizationGranted']),
+    },
+
+    mounted() {
+        this.$store.commit('stopLoading');
     },
 }
 </script>

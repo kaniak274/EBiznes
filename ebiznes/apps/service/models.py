@@ -29,6 +29,10 @@ class Service(TimeStampedModel):
     def __str__(self):
         return self.name
 
+    @property
+    def rate(self):
+        return 2.5
+
 
 class Rating(models.Model):
     rating = models.DecimalField(_('Rating'), max_digits=3, decimal_places=2,
