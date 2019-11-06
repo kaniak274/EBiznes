@@ -18,12 +18,18 @@
                     <div class="name">
                         <router-link
                             v-if="isAll"
-                            :to="{ name: 'service-details', params: { id: `${service.pk}` }}"
-                            >{{ service.name }}</router-link>
+                            :to="{
+                                name: 'service-details',
+                                params: { id: `${service.pk}` }
+                            }"
+                        >{{ service.name }}</router-link>
                         <router-link
                             v-else
-                            :to="{ name: 'service-edit', params: { id: `${service.pk}` }}"
-                            >{{ service.name }}</router-link>
+                            :to="{
+                                name: 'service-edit',
+                                params: { id: `${service.pk}` }
+                            }"
+                        >{{ service.name }}</router-link>
                     </div>
                     <div class="info">
                         <div class="profession">
