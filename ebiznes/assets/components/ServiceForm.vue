@@ -73,8 +73,11 @@
                         <b-field
                             :type="{ 'is-danger': hasFieldError('service_logo') }">
                             <b-upload
+                                @input="swapImage"
                                 v-model="logo" drag-drop>
-                                <section class="section">
+                                <img v-if="imageURL" :src="imageURL"/>
+
+                                <section class="section" v-else>
                                     <div class="content has-text-centered">
                                         <p>
                                             <b-icon
@@ -86,7 +89,7 @@
                                 </section>
                             </b-upload>
                         </b-field>
-
+                        
                         <errors property="service_logo"/>
 
                         <b-field
@@ -130,6 +133,7 @@ export default {
              logo: null,
              phoneNumber: '',
              street: '',
+             imageURL: null,
          }
     },
 
@@ -204,7 +208,11 @@ export default {
                 });
             })
             .catch(error => {});
-        }
+        },
+
+        swapImage: function(file) {
+            this.imageURL = URL.createObjectURL(file);
+        },
     },
 
     mounted() {
@@ -220,7 +228,7 @@ export default {
         if (!this.isCreate) {
             axios.get(`/api/services/services/${this.$route.params.id}`)
             .then(({ data }) => {
-                const { city, name, description, profession, street, phone_number } = data;
+                const { city, name, description, profession, street, phone_number, service_logo } = data;
 
                 this.city = city;
                 this.name = name;
@@ -229,6 +237,8 @@ export default {
                 this.professionSelect = profession.name;
                 this.street = street;
                 this.phoneNumber = phone_number;
+                this.imageURL = service_logo;
+                this.logo = service_logo;
             })
             .catch(error => {
                 const { response: { data }} = error;
