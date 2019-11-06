@@ -31,4 +31,8 @@ export default {
     },
 
     services: ({ services }) => services,
+
+    shouldDisplayNavbar: state => routeName => {
+        return routeName !== 'login' && routeName !== 'register'
+    },
 }

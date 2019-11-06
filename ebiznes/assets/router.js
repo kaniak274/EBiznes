@@ -38,13 +38,19 @@ const checkNotLogged = async (to, from, next) => {
     }
 }
 
+const goToList = async (to, from, next) => {
+    await Vue.nextTick();
+    next({ name: 'service-list', replace: true });
+}
+
 const router = new Router({
     mode: 'history',
     routes: [
         {
             path: '',
             name: 'home',
-            component: Home
+            component: Home,
+            beforeEnter: goToList,
         },
         {
             path: '/register/',

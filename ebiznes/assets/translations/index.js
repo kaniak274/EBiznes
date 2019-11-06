@@ -65,6 +65,8 @@ const i18n = new VueI18n({
                 changePassword: 'Change password',
                 yourAccount: 'Your account',
                 logout: 'Logout',
+                login: 'Sign in',
+                register: 'Sign up',
             },
         },
         pl: {
@@ -125,6 +127,8 @@ const i18n = new VueI18n({
                 changePassword: 'Zmień hasło',
                 yourAccount: 'Twoje konto',
                 logout: 'Wyloguj',
+                login: 'Logowanie',
+                register: 'Rejestracja',
             },
         },
     },
