@@ -51,6 +51,10 @@ Vue.component('service-table', ServiceTable);
 Vue.component('password-reset', PasswordReset);
 Vue.component('service-form', ServiceForm);
 
+import Buefy from 'buefy';
+
+Vue.use(Buefy);
+
 var app = new Vue({
     el: '#app',
     i18n,

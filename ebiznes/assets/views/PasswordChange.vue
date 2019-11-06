@@ -81,7 +81,7 @@ export default {
                     position: 'is-top',
                 });
             })
-            .catch(error => {});
+                .catch(error => {});
         }
     },
 }

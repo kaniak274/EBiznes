@@ -60,3 +60,5 @@ LOGOUT_REDIRECT_URL = '/'
 REST_AUTH_REGISTER_SERIALIZERS = {
     'REGISTER_SERIALIZER': 'ebiznes.apps.users.serializers.CustomRegisterSerializer',
 }
+
+OLD_PASSWORD_FIELD_ENABLED = True
