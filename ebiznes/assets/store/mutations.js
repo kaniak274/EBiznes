@@ -36,4 +36,8 @@ export default {
     stopLoading(state) {
         state.isLoading = false;
     },
+
+    acceptCookie(state) {
+        state.cookieAccepted = true;
+    },
 }

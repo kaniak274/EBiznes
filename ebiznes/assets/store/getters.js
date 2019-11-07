@@ -35,4 +35,8 @@ export default {
     shouldDisplayNavbar: state => routeName => {
         return routeName !== 'login' && routeName !== 'register'
     },
+
+    shouldShowCookieModal: ({ cookieAccepted }) => {
+        return !cookieAccepted;
+    }
 }

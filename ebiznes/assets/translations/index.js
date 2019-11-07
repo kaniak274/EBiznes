@@ -34,6 +34,10 @@ const i18n = new VueI18n({
                 oldPassword: 'Old password',
                 changePasswordBtn: 'Change password',
                 changePasswordSuccess: 'Password has been changed.',
+                cookie: `We use cookies to ensure you get the best expierience. `
+                    + `By using our website you agree to our Cookie Policy.`,
+                cookieAccept: 'Accept',
+                cookieHeader: 'This site uses cookies',
             },
             service: {
                 createHeader: 'Create your service',
@@ -96,6 +100,10 @@ const i18n = new VueI18n({
                 oldPassword: 'Stare hasło',
                 changePasswordBtn: 'Zmień hasło',
                 changePasswordSuccess: 'Hasło zostało zmienione.',
+                cookie: `Wykorzystujemy pliki Cookie aby ułatwić Ci korzystanie z systemu. `
+                    + `Używając naszą stronę akceptujesz politykę plików Cookie.`,
+                cookieAccept: 'Akceptuje',
+                cookieHeader: 'Ta strona wykorzystuje pliki cookie',
             },
             service: {
                 createHeader: 'Dodaj usługę',

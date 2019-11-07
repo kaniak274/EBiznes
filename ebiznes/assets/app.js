@@ -29,6 +29,7 @@ import {
     Navbar,
     Select,
     Rate,
+    Modal,
 } from 'buefy'
 
 import './styles/main.scss';
@@ -44,6 +45,7 @@ Vue.use(Loading);
 Vue.use(Navbar);
 Vue.use(Select);
 Vue.use(Rate);
+Vue.use(Modal);
 
 Vue.component('errors', Errors);
 Vue.component('logout', Logout);

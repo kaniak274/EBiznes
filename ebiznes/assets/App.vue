@@ -1,5 +1,29 @@
 <template>
     <div>
+        <b-modal
+            :active.sync="shouldShowCookieModal"
+            has-modal-card
+            aria-role="dialog"
+            aria-modal>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">{{ $t('message.cookieHeader') }}</p>
+                </header>
+                <div class="modal-card-body">
+                    <div class="content">
+                        {{ $t('message.cookie') }}
+                    </div>
+                </div>
+                <footer class="modal-card-foot">
+                    <button
+                        class="button"
+                        type="button"
+                        @click="acceptCookie"
+                    >{{ $t('message.cookieAccept') }}</button>
+                </footer>
+            </div>
+        </b-modal>
+
         <b-navbar v-if="authorizationGranted" type="is-dark">
             <template slot="brand">
                 Service rent
@@ -49,13 +73,23 @@
     </div>
 </template>
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapState } from 'vuex';
 
 export default {
     name: 'App',
 
     computed: {
-        ...mapGetters(['authorizationGranted', 'shouldDisplayNavbar']),
+        ...mapGetters([
+            'authorizationGranted',
+            'shouldDisplayNavbar',
+            'shouldShowCookieModal',
+        ]),
+    },
+
+    methods: {
+        acceptCookie: function() {
+            this.$store.commit('acceptCookie');
+        },
     },
 };
 </script>
