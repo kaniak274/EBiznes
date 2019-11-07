@@ -132,4 +132,25 @@ export default {
             return Promise.reject(error);
         })
     },
+
+    async submitRating({ commit, getters }, payload) {
+        this.loading = true;
+
+        await axios.post(
+            '/api/services/ratings/',
+            payload,
+            getters.axiosConfig,
+        )
+        .then(response => {
+            this.loading = false;
+            return response;
+        })
+        .catch(error => {
+            const { response: { data }} = error;
+            commit('setError', data);
+
+            this.loading = false;
+            return Promise.reject(error);
+        })
+    },
 }

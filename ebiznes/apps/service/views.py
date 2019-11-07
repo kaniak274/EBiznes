@@ -43,3 +43,5 @@ class CreateRatingAPIView(CreateAPIView):
     serializer_class = RatingSerializer
     permission_classes = [IsAuthenticated]
 
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)

@@ -14,10 +14,10 @@ class RatingSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Rating
-        fields = ('pk', 'rating', 'owner', 'service', 'comment',)
+        fields = ('pk', 'owner', 'rating', 'comment', 'service')
         extra_kwargs = {
             'owner': {'required': False, 'write_only': True},
-            'service': {'write_only': True},
+            'service': {'write_only': True}
         }
 
 

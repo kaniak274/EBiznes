@@ -61,6 +61,10 @@ const i18n = new VueI18n({
                     more4: 'More than four stars',
                     five: 'Five stars',
                 },
+                rating: 'Your rating',
+                comment: 'Your comment',
+                submit: 'Submit',
+                ratingSuccess: 'Thank you for rating.',
             },
             navbar: {
                 home: 'Home',
@@ -127,6 +131,10 @@ const i18n = new VueI18n({
                     more4: 'Więcej niż cztery gwiazdki',
                     five: 'Pięć gwiazdek',
                 },
+                rating: 'Twoja Ocena',
+                comment: 'Twój komentarz',
+                submit: 'Dodaj',
+                ratingSuccess: 'Dziękujemy za Twoją ocenę',
             },
             navbar: {
                 home: 'Strona główna',

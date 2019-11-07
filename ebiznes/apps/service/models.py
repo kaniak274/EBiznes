@@ -39,11 +39,10 @@ class Rating(models.Model):
     rating = models.DecimalField(_('Rating'), max_digits=3, decimal_places=2,
         validators=[MinValueValidator(Decimal('0.00')), MaxValueValidator(Decimal('5.00'))])
 
-    owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='ratings')
     service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='ratings')
 
     comment = models.TextField(_('Comment'), null=True, blank=True)
 
     class Meta:
         unique_together = ('owner', 'service')
-
