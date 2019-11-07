@@ -1,12 +1,12 @@
 from django_filters.rest_framework import DjangoFilterBackend
 
 from rest_framework import viewsets
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import CreateAPIView, ListAPIView
 from rest_framework.permissions import IsAuthenticated
 
 from .filters import *
 from .models import *
-from .serializers import ProfessionSerializer, ServiceSerializer
+from .serializers import ProfessionSerializer, RatingSerializer, ServiceSerializer
 
 
 class ServiceViewset(viewsets.ModelViewSet):
@@ -37,4 +37,9 @@ class ProfessionListView(ListAPIView):
     serializer_class = ProfessionSerializer
     permission_classes = []
     pagination_class = None
+
+
+class CreateRatingAPIView(CreateAPIView):
+    serializer_class = RatingSerializer
+    permission_classes = [IsAuthenticated]
 

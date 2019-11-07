@@ -9,4 +9,5 @@ router.register(r'services', views.ServiceViewset, base_name='services')
 
 urlpatterns = [
     path('professions/', views.ProfessionListView.as_view(), name='professions'),
+    path('ratings/', views.CreateRatingAPIView.as_view(), name='ratings'),
 ] + router.urls

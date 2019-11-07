@@ -42,6 +42,8 @@ class Rating(models.Model):
     owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='ratings')
 
+    comment = models.TextField(_('Comment'), null=True, blank=True)
+
     class Meta:
         unique_together = ('owner', 'service')
 

@@ -9,6 +9,18 @@ class ProfessionSerializer(serializers.ModelSerializer):
         fields = ('pk', 'name')
 
 
+class RatingSerializer(serializers.ModelSerializer):
+    rating = serializers.DecimalField(max_digits=3, decimal_places=2, min_value=0, max_value=5)
+
+    class Meta:
+        model = Rating
+        fields = ('pk', 'rating', 'owner', 'service', 'comment',)
+        extra_kwargs = {
+            'owner': {'required': False, 'write_only': True},
+            'service': {'write_only': True},
+        }
+
+
 class ServiceSerializer(serializers.ModelSerializer):
     profession = ProfessionSerializer(read_only=True)
     profession_id = serializers.PrimaryKeyRelatedField(
@@ -22,4 +34,3 @@ class ServiceSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'owner': {'required': False},
         }
-
