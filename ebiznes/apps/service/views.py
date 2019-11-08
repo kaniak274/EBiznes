@@ -1,7 +1,9 @@
+from django.http import Http404
 from django_filters.rest_framework import DjangoFilterBackend
 
 from rest_framework import viewsets
-from rest_framework.generics import CreateAPIView, ListAPIView
+from rest_framework.generics import (CreateAPIView, ListAPIView,
+    RetrieveAPIView, UpdateAPIView)
 from rest_framework.permissions import IsAuthenticated
 
 from .filters import *
@@ -50,3 +52,28 @@ class CreateRatingAPIView(CreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+
+class UpdateRating(UpdateAPIView):
+    serializer_class = RatingSerializer
+    permission_classes = [IsAuthenticated]
+    queryset = Rating.objects.all()
+
+    def perform_update(self, serializer):
+        serializer.save(owner=self.request.user)
+
+
+class CheckRatingAPIView(RetrieveAPIView):
+    serializer_class = RatingSerializer
+    permission_classes = [IsAuthenticated]
+    queryset = Service.objects.all()
+
+    def get_object(self):
+        service = super().get_object()
+
+        rating = service.ratings.filter(owner=self.request.user.pk).first()
+
+        if not rating:
+            raise Http404
+
+        return rating

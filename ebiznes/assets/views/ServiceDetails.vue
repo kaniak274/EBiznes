@@ -74,6 +74,8 @@
             <b-loading :active.sync="isLoading"/>
 
             <div class="rating-form" v-if="authorizationGranted">
+                <h1 v-if="alreadyCommented">{{ $t('service.yourComment') }}</h1>
+
                 <form method="POST" onSubmit="return false">
                     <b-rate
                         v-model="rating"
@@ -97,9 +99,16 @@
                     <errors property="non_field_errors"/>
 
                     <b-button
+                        v-if="!alreadyCommented"
                         type="is-primary is-medium"
                         @click="addRating"
                     >{{ $t('service.submit') }}</b-button>
+
+                    <b-button
+                        v-else
+                        type="is-primary is-medium"
+                        @click="edit"
+                    >{{ $t('service.edit') }}</b-button>
                 </form>
             </div>
         </div>
@@ -107,6 +116,7 @@
 </template>
 <script>
 import { mapActions, mapGetters, mapState } from 'vuex';
+import axios from 'axios';
 
 export default {
     name: 'ServiceDetails',
@@ -115,6 +125,8 @@ export default {
         return {
             comment: '',
             rating: 0,
+            alreadyCommented: false,
+            pk: 0,
         }
     },
 
@@ -136,6 +148,8 @@ export default {
         ...mapActions([
             'loadSingleService',
             'submitRating',
+            'checkRating',
+            'editRating',
         ]),
 
         addRating: function() {
@@ -162,11 +176,47 @@ export default {
 
         getCustomText: ({ owner_data: { first_name, last_name }, modified }) => {
             return `${first_name} ${last_name} ${modified.split('T')[0]}`;
+        },
+
+        edit: function() {
+            const { rating, comment, owner, pk } = this;
+
+            const payload = {
+                data: {
+                    rating,
+                    comment,
+                    owner,
+                    service: this.$route.params.id,
+                },
+                id: pk,
+            };
+
+            this.editRating(payload)
+            .then(result => {
+                this.$buefy.snackbar.open({
+                    duration: 3000,
+                    message: this.$t('service.ratingSuccess'),
+                    type: 'is-success',
+                    position: 'is-top',
+                })
+            })
+            .catch(error => {});
         }
     },
 
     created() {
         this.loadSingleService(this.$route.params.id);
+
+        if (this.authorizationGranted) {
+            this.checkRating(this.$route.params.id)
+            .then(({ data: { comment, rating_value, pk }}) => {
+                this.comment = comment;
+                this.rating = rating_value;
+                this.alreadyCommented = true;
+                this.pk = pk
+            })
+            .catch(error => {});
+        }
     },
 }
 </script>

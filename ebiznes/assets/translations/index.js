@@ -68,6 +68,8 @@ const i18n = new VueI18n({
                 contact: 'Contact info',
                 comments: 'Users comments',
                 averageRate: 'Average rating',
+                yourComment: 'Your comment',
+                edit: 'Edit',
             },
             navbar: {
                 home: 'Home',
@@ -141,6 +143,8 @@ const i18n = new VueI18n({
                 contact: 'Kontakt',
                 comments: 'Komentarze użytkowników',
                 averageRate: 'Średnia ocena',
+                yourComment: 'Twój komentarz',
+                edit: 'Edytuj',
             },
             navbar: {
                 home: 'Strona główna',

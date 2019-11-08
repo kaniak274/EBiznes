@@ -153,4 +153,29 @@ export default {
             return Promise.reject(error);
         })
     },
+
+    async checkRating({ getters }, id) {
+        return await axios.get(`/api/services/check-rating/${id}/`, getters.axiosConfig);
+    },
+
+    async editRating({ commit, getters }, payload) {
+        this.loading = true;
+
+        await axios.put(
+            `/api/services/ratings/${payload.id}/`,
+            payload.data,
+            getters.axiosConfig,
+        )
+        .then(response => {
+            this.loading = false;
+            return response;
+        })
+        .catch(error => {
+            const { response: { data }} = error;
+            commit('setError', data);
+
+            this.loading = false;
+            return Promise.reject(error);
+        })
+    },
 }
