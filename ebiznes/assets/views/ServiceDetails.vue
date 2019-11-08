@@ -73,7 +73,7 @@
 
             <b-loading :active.sync="isLoading"/>
 
-            <div class="rating-form">
+            <div class="rating-form" v-if="authorizationGranted">
                 <form method="POST" onSubmit="return false">
                     <b-rate
                         v-model="rating"
@@ -122,10 +122,14 @@ export default {
         ...mapState({
             service: state => state.service,
             isLoading: state => state.isLoading,
-            owner: state => state.user.pk,
+            owner: state => {
+                const { user = { 'pk': 0 }} = state;
+
+                return user.pk
+            },
         }),
 
-        ...mapGetters(['hasFieldError']),
+        ...mapGetters(['hasFieldError', 'authorizationGranted']),
     },
 
     methods: {
