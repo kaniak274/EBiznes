@@ -25,7 +25,6 @@
                             :type="{ 'is-danger': hasFieldError('description') }">
                             <b-input
                                 :placeholder="$t('service.descriptionLabel')"
-                                maxlength="200"
                                 type="textarea"
                                 v-model="description"/>
                         </b-field>

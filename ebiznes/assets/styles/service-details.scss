@@ -1,0 +1,65 @@
+#ServiceDetails {
+    .details-container {
+        margin-top: 2em;
+
+        .right-content {
+            .name-container {
+                border-bottom: 1px solid black;
+
+                .name {
+                    color: #7957d5;
+                    font-size: 4em;
+                }  
+            }
+        } 
+    }
+
+    .info-container {
+        text-align: center;
+        margin-top: 2em;
+        margin-bottom: 2em;
+        padding-bottom: 2em;
+        border-bottom: 1px solid black;
+
+        .rating {
+            display: block;
+
+            p {
+                font-size: 2em;
+            }
+
+            .rate {
+                display: inline;
+            }
+        }
+
+        .service-type {
+            h1 {
+                font-size: 2em;
+            }
+        }
+
+        .contact-info {
+            h1 {
+                font-size: 2em;
+            }
+        }
+    }
+
+    .rating-container {
+        margin-top: 2em;
+        margin-bottom: 2em;
+
+        h1 {
+            font-size: 2.5em;
+        }
+
+        .user-comments {
+            margin-bottom: 2em;
+
+            .rating {
+                margin-bottom: 1em;
+            }
+        }
+    }
+}

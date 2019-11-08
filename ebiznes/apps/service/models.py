@@ -30,12 +30,16 @@ class Service(TimeStampedModel):
         return self.name
 
     @property
+    def random_ratings(self):
+        return self.ratings.all().order_by('?')[:5]
+
+    @property
     def rate(self):
         ### TODO: ADD RATING CALCULATION HERE
         return 2.5
 
 
-class Rating(models.Model):
+class Rating(TimeStampedModel):
     rating = models.DecimalField(_('Rating'), max_digits=3, decimal_places=2,
         validators=[MinValueValidator(Decimal('0.00')), MaxValueValidator(Decimal('5.00'))])
 
