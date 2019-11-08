@@ -42,6 +42,9 @@
 
             <template slot="end">
                 <b-navbar-dropdown :label="$t('navbar.yourAccount')">
+                    <b-navbar-item tag="router-link" :to="{ name: 'your-account' }">
+                        {{ $t('navbar.editAccount') }}
+                    </b-navbar-item>
                     <b-navbar-item tag="router-link" :to="{ name: 'password-change' }">
                         {{ $t('navbar.changePassword') }}
                     </b-navbar-item>

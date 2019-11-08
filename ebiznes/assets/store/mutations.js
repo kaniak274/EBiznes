@@ -40,4 +40,8 @@ export default {
     acceptCookie(state) {
         state.cookieAccepted = true;
     },
+
+    changeUser(state, data) {
+        state.user = data;
+    },
 }

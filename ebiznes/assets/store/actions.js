@@ -178,4 +178,27 @@ export default {
             return Promise.reject(error);
         })
     },
+
+    async editAccount({ commit, getters }, payload) {
+        this.loading = true;
+
+        await axios.put(
+            `/rest-auth/user/`,
+            payload,
+            getters.axiosConfig
+        )
+        .then(({ data }) => {
+            commit('changeUser', data);
+
+            this.loading = false;
+            return data;
+        })
+        .catch(error => {
+            const { response: { data }} = error;
+            commit('setError', data);
+
+            this.loading = false;
+            return Promise.reject(error);
+        })
+    }
 }
