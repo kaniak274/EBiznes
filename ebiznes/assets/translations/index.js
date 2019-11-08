@@ -38,6 +38,9 @@ const i18n = new VueI18n({
                     + `By using our website you agree to our Cookie Policy.`,
                 cookieAccept: 'Accept',
                 cookieHeader: 'This site uses cookies',
+                edit: 'Edit account',
+                editSuccess: "You've successfully edited your account.",
+                editHeader: 'Edit your account',
             },
             service: {
                 createHeader: 'Create your service',
@@ -80,6 +83,7 @@ const i18n = new VueI18n({
                 logout: 'Logout',
                 login: 'Sign in',
                 register: 'Sign up',
+                editAccount: 'Edit account',
             },
         },
         pl: {
@@ -113,6 +117,9 @@ const i18n = new VueI18n({
                     + `Używając naszą stronę akceptujesz politykę plików Cookie.`,
                 cookieAccept: 'Akceptuje',
                 cookieHeader: 'Ta strona wykorzystuje pliki cookie',
+                edit: 'Edytuj konto',
+                editSuccess: 'Udało Ci się zedytować Twoje dane.',
+                editHeader: 'Edytuj swoje konto',
             },
             service: {
                 createHeader: 'Dodaj usługę',
@@ -155,6 +162,7 @@ const i18n = new VueI18n({
                 logout: 'Wyloguj',
                 login: 'Logowanie',
                 register: 'Rejestracja',
+                editAccount: 'Edytuj konto',
             },
         },
     },
