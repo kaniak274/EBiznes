@@ -65,6 +65,9 @@ const i18n = new VueI18n({
                 comment: 'Your comment',
                 submit: 'Submit',
                 ratingSuccess: 'Thank you for rating.',
+                contact: 'Contact info',
+                comments: 'Users comments',
+                averageRate: 'Average rating',
             },
             navbar: {
                 home: 'Home',
@@ -135,6 +138,9 @@ const i18n = new VueI18n({
                 comment: 'Twój komentarz',
                 submit: 'Dodaj',
                 ratingSuccess: 'Dziękujemy za Twoją ocenę',
+                contact: 'Kontakt',
+                comments: 'Komentarze użytkowników',
+                averageRate: 'Średnia ocena',
             },
             navbar: {
                 home: 'Strona główna',

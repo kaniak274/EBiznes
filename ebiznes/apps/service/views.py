@@ -6,17 +6,22 @@ from rest_framework.permissions import IsAuthenticated
 
 from .filters import *
 from .models import *
-from .serializers import ProfessionSerializer, RatingSerializer, ServiceSerializer
+from .serializers import *
 
 
 class ServiceViewset(viewsets.ModelViewSet):
     model = Service
-    serializer_class = ServiceSerializer
     queryset = Service.objects.all().order_by('-id').prefetch_related(
         'ratings'
     ).select_related('profession')
     filter_backends = [DjangoFilterBackend]
     filterset_class = ServiceFilter
+
+    def get_serializer_class(self):
+        if self.action == 'retrieve':
+            return DetailServiceSerializer
+        else:
+            return ServiceSerializer
 
     def get_permissions(self):
         actions = ['create', 'update', 'partial_update']

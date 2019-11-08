@@ -3,3 +3,9 @@
 @import "./login.scss";
 @import "./register.scss";
 @import "./service-list.scss";
+@import "./service-details.scss";
+
+// Override buefy textarea resize: vertical.
+.textarea {
+    resize: none;
+}
