@@ -11,14 +11,10 @@ ALLOWED_HOSTS = [
 
 WEBPACK_MANIFEST_FILE = os.path.join(BASE_DIR, '../manifest-dist.json')
 
-#STATICFILES_DIRS = [
-#    os.path.join(BASE_DIR, 'static', 'local')
-#]
-
 ENV_PATH = os.path.abspath(os.path.dirname(__file__))
 
 STATIC_ROOT = os.path.join(ENV_PATH, '../../public/static/')
-MEDIA_ROOT = os.path.join(ENV_PATH, '../../public/media/')
+MEDIA_ROOT = os.path.join(ENV_PATH, '../../public/uploads/')
 
 STATICFILES_DIRS = [
     os.path.join(ENV_PATH, '../static', 'dist')
