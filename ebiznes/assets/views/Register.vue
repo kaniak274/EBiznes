@@ -17,6 +17,11 @@
                                     :to="{ name: 'login' }">
                                     {{ $t('message.loginLink') }}
                                 </router-link>
+                                <router-link
+                                    class="link-register ml-3"
+                                    :to="{ name: 'home' }">
+                                    {{ $t('navbar.home') }}
+                                </router-link>
                             </div>
                         </div>
                     </div>

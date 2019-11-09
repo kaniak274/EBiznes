@@ -13,8 +13,13 @@
                             <div class="register-col">
                                 <p> {{ $t('message.noAccount') }} </p>
                                 <router-link
-                                    class="link-register" to="/register">
+                                    class="link-register" :to="{ name: 'register' }">
                                     {{ $t('message.registerFromLogin') }}
+                                </router-link>
+
+                                <router-link
+                                    class="link-register ml-3" :to="{ name: 'home' }">
+                                    {{ $t('navbar.home') }}
                                 </router-link>
                             </div>
                         </div>
