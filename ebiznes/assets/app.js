@@ -32,6 +32,7 @@ import {
     Rate,
     Modal,
     Checkbox,
+    Table,
 } from 'buefy'
 
 import './styles/main.scss';
@@ -49,6 +50,7 @@ Vue.use(Select);
 Vue.use(Rate);
 Vue.use(Modal);
 Vue.use(Checkbox);
+Vue.use(Table);
 
 Vue.component('errors', Errors);
 Vue.component('logout', Logout);

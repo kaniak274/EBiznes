@@ -44,3 +44,9 @@ class ServiceFilter(filters.FilterSet):
                 return [service for service in queryset if service.rate == 5]
 
         return queryset
+
+
+class RentFilter(filters.FilterSet):
+    class Meta:
+        model = Rent
+        fields = ('user',)

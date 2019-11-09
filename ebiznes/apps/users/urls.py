@@ -15,4 +15,5 @@ urlpatterns = [
     path('password-change/', views.base_view),
     path('your-account/', views.base_view),
     path('privacy/', views.base_view),
+    path('rent-history/', views.base_view),
 ]

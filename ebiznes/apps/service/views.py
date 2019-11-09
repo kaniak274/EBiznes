@@ -95,3 +95,11 @@ class CheckRatingAPIView(RetrieveAPIView):
             raise Http404
 
         return rating
+
+
+class RentListAPIView(ListAPIView):
+    serializer_class = RentSerializer
+    queryset = Rent.objects.all()
+    permission_classes = [IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = RentFilter

@@ -93,6 +93,12 @@ const i18n = new VueI18n({
                 login: 'Sign in',
                 register: 'Sign up',
                 editAccount: 'Edit account',
+                rentHistory: 'Rent history',
+            },
+            rent: {
+                serviceLabel: 'Service name',
+                dateLabel: 'Date',
+                addressLabel: 'Address',
             },
         },
         pl: {
@@ -184,6 +190,12 @@ const i18n = new VueI18n({
                 login: 'Logowanie',
                 register: 'Rejestracja',
                 editAccount: 'Edytuj konto',
+                rentHistory: 'Historia wynajmów',
+            },
+            rent: {
+                serviceLabel: 'Nazwa usługi',
+                dateLabel: 'Data',
+                addressLabel: 'Adres',
             },
         },
     },

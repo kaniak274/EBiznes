@@ -15,6 +15,7 @@ import ServiceEdit from './views/ServiceEdit';
 import PasswordChange from './views/PasswordChange';
 import YourAccount from './views/YourAccount';
 import Privacy from './views/Privacy';
+import RentHistory from './views/RentHistory';
 
 Vue.use(Router)
 
@@ -82,6 +83,12 @@ const router = new Router({
             path: '/privacy/',
             name: 'privacy',
             component: Privacy,
+        },
+        {
+            path: '/rent-history/',
+            name: 'rent-history',
+            component: RentHistory,
+            beforeEnter: checkNotLogged,
         },
         {
             path: '/services/',

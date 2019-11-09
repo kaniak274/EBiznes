@@ -53,6 +53,12 @@ class DetailServiceSerializer(ServiceSerializer):
 
 
 class RentSerializer(serializers.ModelSerializer):
+    service_name = serializers.CharField(max_length=255, read_only=True, source='service.name')
+
     class Meta:
         model = Rent
-        fields = ('pk', 'created', 'service', 'user', 'status', 'phone_number', 'address')
+        fields = ('pk', 'created', 'service', 'user',
+            'status', 'phone_number', 'address', 'service_name')
+        extra_kwargs = {
+            'service': {'write_only': True},
+        }

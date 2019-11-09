@@ -38,6 +38,9 @@
                 <b-navbar-item tag="router-link" :to="{ name: 'service-user' }">
                     {{ $t('navbar.yourService') }}
                 </b-navbar-item>
+                <b-navbar-item tag="router-link" :to="{ name: 'rent-history' }">
+                    {{ $t('navbar.rentHistory') }}
+                </b-navbar-item>
             </template>
 
             <template slot="end">

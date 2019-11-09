@@ -12,4 +12,5 @@ urlpatterns = [
     path('ratings/', views.CreateRatingAPIView.as_view(), name='ratings'),
     path('ratings/<int:pk>/', views.UpdateRating.as_view(), name='ratings-update'),
     path('check-rating/<int:pk>/', views.CheckRatingAPIView.as_view(), name='check-rating'),
+    path('rents/', views.RentListAPIView.as_view(), name='rents'),
 ] + router.urls
