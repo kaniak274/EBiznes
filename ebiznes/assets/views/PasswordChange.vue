@@ -1,45 +1,53 @@
 <template>
-    <div>
+    <div id="YourAccount" class="container-fluid">
         <b-loading :active.sync="isLoading"/>
 
-        <form method="POST" onSubmit="return false">
-            <b-field
-                :type="{ 'is-danger': hasFieldError('new_password1') }">
-                <b-input
-                    type="password"
-                    :placeholder="$t('message.newPassword1')"
-                    v-model="new_password1"/>
-            </b-field>
+        <div class="header">
+            <h1>{{ $t('message.passwordChangeHeader') }}</h1>
+        </div>
 
-            <errors property="new_password1"/>
+        <div class="row">
+            <div class="account-form col-5 mx-auto">
+                <form method="POST" onSubmit="return false">
+                    <b-field
+                        :type="{ 'is-danger': hasFieldError('new_password1') }">
+                        <b-input
+                            type="password"
+                            :placeholder="$t('message.newPassword1')"
+                            v-model="new_password1"/>
+                    </b-field>
 
-            <b-field
-                :type="{ 'is-danger': hasFieldError('new_password2') }">
-                <b-input
-                    type="password"
-                    :placeholder="$t('message.newPassword2')"
-                    v-model="new_password2"/>
-            </b-field>
+                    <errors property="new_password1"/>
 
-            <errors property="new_password2"/>
+                    <b-field
+                        :type="{ 'is-danger': hasFieldError('new_password2') }">
+                        <b-input
+                            type="password"
+                            :placeholder="$t('message.newPassword2')"
+                            v-model="new_password2"/>
+                    </b-field>
 
-            <b-field
-                :type="{ 'is-danger': hasFieldError('old_password') }">
-                <b-input
-                    type="password"
-                    :placeholder="$t('message.oldPassword')"
-                    v-model="old_password"/>
-            </b-field>
+                    <errors property="new_password2"/>
 
-            <errors property="old_password"/>
-            <errors property="non_field_errors"/>
+                    <b-field
+                        :type="{ 'is-danger': hasFieldError('old_password') }">
+                        <b-input
+                            type="password"
+                            :placeholder="$t('message.oldPassword')"
+                            v-model="old_password"/>
+                    </b-field>
 
-            <b-button
-                type="is-primary is-medium"
-                @click="change">
-                {{ $t('message.changePasswordBtn') }}
-            </b-button>
-        </form>
+                    <errors property="old_password"/>
+                    <errors property="non_field_errors"/>
+
+                    <b-button
+                        type="is-primary is-medium"
+                        @click="change">
+                        {{ $t('message.changePasswordBtn') }}
+                    </b-button>
+                </form>
+            </div>
+        </div>
     </div>
 </template>
 <script>

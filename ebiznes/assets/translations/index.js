@@ -41,6 +41,8 @@ const i18n = new VueI18n({
                 edit: 'Edit account',
                 editSuccess: "You've successfully edited your account.",
                 editHeader: 'Edit your account',
+                passwordChangeHeader: 'Change your password',
+                yourServices: 'Your services',
             },
             service: {
                 createHeader: 'Create your service',
@@ -120,6 +122,8 @@ const i18n = new VueI18n({
                 edit: 'Edytuj konto',
                 editSuccess: 'Udało Ci się zedytować Twoje dane.',
                 editHeader: 'Edytuj swoje konto',
+                passwordChangeHeader: 'Zmień swoje hasło',
+                yourServices: 'Twoje usługi',
                 privacyMessage: `Klikając przycisk Zarejestruj, przyjmuję do wiadomości,
                     że ServiceRent wykorzystuje moje dane zgodnie z <a href="/privacy/"
                     >Polityką prywatności.</a>`
