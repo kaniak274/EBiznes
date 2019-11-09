@@ -33,7 +33,7 @@
                     </div>
                     <div class="info">
                         <div class="profession">
-                            {{ $t('service.serviceLabel') }}: {{ service.profession.name }}
+                            {{ $t('service.serviceLabel') }}: {{ professionNameService(service) }}
                         </div>
                         <div class="city">
                             {{ $t('service.cityLabel') }}: {{ service.city }}
@@ -60,7 +60,7 @@
     </div>
 </template>
 <script>
-import { mapActions, mapState } from 'vuex';
+import { mapActions, mapGetters, mapState } from 'vuex';
 
 export default {
     name: 'ServiceList',
@@ -71,6 +71,8 @@ export default {
     },
 
     computed: {
+        ...mapGetters(['professionNameService']),
+
         ...mapState({
             services: state => state.services,
             isLoading: state => state.isLoading,

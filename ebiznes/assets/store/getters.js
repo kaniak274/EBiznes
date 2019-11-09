@@ -47,4 +47,12 @@ export default {
             return '';
         }
     },
+
+    professionNameService: state => service => {
+        if (service.profession) {
+            return service.profession.name;
+        } else {
+            return '';
+        }
+    }
 }
