@@ -4,7 +4,7 @@
             <b-loading :active.sync="isLoading"/>
 
             <form method="POST" onSubmit="return false">
-                <div class="row mb-5">
+                <div class="row mb-5 header">
                     <div class="col-12 text-center">
                         <h1 v-if="isCreate">{{ $t("service.createHeader") }}</h1>
                         <h1 v-else>{{ $t("service.editHeader") }}</h1>
@@ -237,7 +237,19 @@ export default {
                 this.street = street;
                 this.phoneNumber = phone_number;
                 this.imageURL = service_logo;
-                this.logo = service_logo;
+                var logo = this.logo
+
+                var request = new XMLHttpRequest();
+                request.open('GET', service_logo, true);
+                request.responseType = 'blob';
+
+                request.onload = function() {
+                    var reader = new FileReader();
+                    reader.readAsDataURL(request.response);
+
+                    reader.onload = ({ target: { result }}) => logo = result;
+                };
+                request.send();
             })
             .catch(error => {
                 const { response: { data }} = error;
