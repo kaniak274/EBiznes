@@ -1,10 +1,12 @@
 from django.http import Http404
 from django_filters.rest_framework import DjangoFilterBackend
 
-from rest_framework import viewsets
+from rest_framework import status, viewsets
+from rest_framework.decorators import action
 from rest_framework.generics import (CreateAPIView, ListAPIView,
     RetrieveAPIView, UpdateAPIView)
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
 
 from .filters import *
 from .models import *
@@ -26,7 +28,7 @@ class ServiceViewset(viewsets.ModelViewSet):
             return ServiceSerializer
 
     def get_permissions(self):
-        actions = ['create', 'update', 'partial_update']
+        actions = ['create', 'update', 'partial_update', 'rent_service']
 
         if self.action in actions:
             permission_classes = [IsAuthenticated]
@@ -37,6 +39,22 @@ class ServiceViewset(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+    @action(detail=True, methods=['post'])
+    def rent_service(self, request, pk=None):
+        service = self.get_object()
+
+        data = request.data
+        data.update({
+            'service': pk,
+            'user': request.user.pk,
+        })
+
+        serializer = RentSerializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class ProfessionListView(ListAPIView):

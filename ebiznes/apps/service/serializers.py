@@ -51,3 +51,8 @@ class DetailServiceSerializer(ServiceSerializer):
             'profession_id', 'city', 'street', 'service_logo', 'phone_number',
             'created', 'rate', 'random_ratings')
 
+
+class RentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Rent
+        fields = ('pk', 'created', 'service', 'user', 'status', 'phone_number', 'address')

@@ -1,4 +1,6 @@
+from rest_auth.serializers import UserDetailsSerializer
 from rest_auth.registration.serializers import RegisterSerializer
+
 from rest_framework import serializers
 
 
@@ -15,3 +17,10 @@ class CustomRegisterSerializer(RegisterSerializer):
         user.save()
 
         return user
+
+
+class CustomUserSerializer(UserDetailsSerializer):
+    class Meta(UserDetailsSerializer.Meta):
+        fields = ('pk', 'username', 'first_name', 'last_name',
+            'phone_number', 'email', 'address')
+

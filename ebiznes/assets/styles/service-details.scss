@@ -4,12 +4,19 @@
 
         .right-content {
             .name-container {
+                display: flex;
+                justify-content: space-between;
                 border-bottom: 1px solid black;
 
                 .name {
                     color: #7957d5;
                     font-size: 4em;
-                }  
+                }
+
+                .rent-container {
+                    margin-top: auto;
+                    margin-bottom: auto;
+                }
             }
         } 
     }

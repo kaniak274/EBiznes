@@ -7,6 +7,8 @@ from django.utils.translation import gettext as _
 
 from model_utils.models import TimeStampedModel
 
+from .choices import *
+
 
 class Profession(models.Model):
     name = models.CharField(max_length=200)
@@ -50,3 +52,12 @@ class Rating(TimeStampedModel):
 
     class Meta:
         unique_together = ('owner', 'service')
+
+
+class Rent(TimeStampedModel):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='rents')
+    service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='rents')
+
+    status = models.CharField(max_length=100, default=WAITING, choices=STATUS_CHOICES)
+    phone_number = models.CharField(max_length=20, null=True, blank=True)
+    address = models.CharField(max_length=255, null=True, blank=True)

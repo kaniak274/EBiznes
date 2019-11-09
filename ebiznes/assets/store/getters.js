@@ -38,5 +38,13 @@ export default {
 
     shouldShowCookieModal: ({ cookieAccepted }) => {
         return !cookieAccepted;
-    }
+    },
+
+    professionName: ({ service }) => {
+        if (service.profession) {
+            return service.profession.name;
+        } else {
+            return '';
+        }
+    },
 }

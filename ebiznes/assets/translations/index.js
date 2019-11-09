@@ -76,6 +76,12 @@ const i18n = new VueI18n({
                 averageRate: 'Average rating',
                 yourComment: 'Your comment',
                 edit: 'Edit',
+                rentBtn: 'Rent',
+                close: 'Close',
+                addressLabel: 'Address',
+                rentHeader: 'Contact details',
+                rentSuccess: `Your application has been accepted. You will
+                    get an e-mail when service provider will accept your application`,
             },
             navbar: {
                 home: 'Home',
@@ -161,6 +167,12 @@ const i18n = new VueI18n({
                 averageRate: 'Średnia ocena',
                 yourComment: 'Twój komentarz',
                 edit: 'Edytuj',
+                rentBtn: 'Wynajmij',
+                close: 'Zamknij',
+                addressLabel: 'Adres',
+                rentHeader: 'Dane kontaktowe',
+                rentSuccess: `Twoje zgłoszenie zostało przyjętę. Otrzymasz e-mail,
+                    gdy Twoje zgłoszenie zostanie przyjętę przez usługodawcę.`,
             },
             navbar: {
                 home: 'Strona główna',

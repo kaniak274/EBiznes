@@ -16,6 +16,7 @@
                 <div class="col-9 right-content">
                     <div class="name-container">
                         <h1 class="name">{{ service.name }}</h1>
+                        <rent/>
                     </div>
 
                     <div class="description-container">
@@ -41,7 +42,7 @@
                 <div class="col-4">
                     <div class="service-type">
                         <h1>{{ $t('service.serviceLabel') }}</h1>
-                        <p>{{ service.profession.name }}</p>
+                        <p>{{ professionName }}</p>
                     </div>
                 </div>
                 <div class="col-4">
@@ -141,7 +142,11 @@ export default {
             },
         }),
 
-        ...mapGetters(['hasFieldError', 'authorizationGranted']),
+        ...mapGetters([
+            'hasFieldError',
+            'authorizationGranted',
+            'professionName',
+        ]),
     },
 
     methods: {
@@ -201,7 +206,7 @@ export default {
                 })
             })
             .catch(error => {});
-        }
+        },
     },
 
     created() {
