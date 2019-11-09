@@ -12,4 +12,3 @@ WEBPACK_MANIFEST_FILE = os.path.join(BASE_DIR, '../manifest-dist.json')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/dist/')
 
-print(STATIC_ROOT)
