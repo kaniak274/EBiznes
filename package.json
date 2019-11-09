@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack/webpack.local.js --mode development",
-    "watch": "webpack --config webpack/webpack.local.js --watch --mode development"
+    "watch": "webpack --config webpack/webpack.local.js --watch --mode development",
+    "build-dist": "webpack --config webpack/webpack.dist.js --mode production"
   },
   "author": "",
   "license": "ISC",
