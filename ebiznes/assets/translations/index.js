@@ -79,7 +79,7 @@ const i18n = new VueI18n({
                 rentBtn: 'Rent',
                 close: 'Close',
                 addressLabel: 'Address',
-                rentHeader: 'Contact details',
+                rentHeader: 'Your contact details',
                 rentSuccess: `Your application has been accepted. You will
                     get an e-mail when service provider will accept your application`,
             },
@@ -170,7 +170,7 @@ const i18n = new VueI18n({
                 rentBtn: 'Wynajmij',
                 close: 'Zamknij',
                 addressLabel: 'Adres',
-                rentHeader: 'Dane kontaktowe',
+                rentHeader: 'Twoje dane kontaktowe',
                 rentSuccess: `Twoje zgłoszenie zostało przyjętę. Otrzymasz e-mail,
                     gdy Twoje zgłoszenie zostanie przyjętę przez usługodawcę.`,
             },

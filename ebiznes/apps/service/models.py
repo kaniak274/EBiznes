@@ -8,6 +8,7 @@ from django.utils.translation import gettext as _
 from model_utils.models import TimeStampedModel
 
 from .choices import *
+from .utils import send_email
 
 
 class Profession(models.Model):
@@ -61,3 +62,17 @@ class Rent(TimeStampedModel):
     status = models.CharField(max_length=100, default=WAITING, choices=STATUS_CHOICES)
     phone_number = models.CharField(max_length=20, null=True, blank=True)
     address = models.CharField(max_length=255, null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        msg_ctx = {
+            'name': self.service.name,
+        }
+
+        send_email(
+            'ServiceRent approval',
+            'service/email/approval.html',
+            [self.user.email],
+            msg_ctx,
+        )
+
+        super().save(*args, **kwargs)
