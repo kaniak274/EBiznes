@@ -45,6 +45,7 @@
                         @click="change">
                         {{ $t('message.changePasswordBtn') }}
                     </b-button>
+                    <p>{{ $t('message.passwordChangeMessage') }}</p>
                 </form>
             </div>
         </div>
@@ -81,15 +82,6 @@ export default {
             const { new_password1, new_password2, old_password } = this;
 
             this.changePassword({ new_password1, new_password2, old_password})
-            .then(result => {
-                this.$buefy.snackbar.open({
-                    duration: 3000,
-                    message: this.$t('message.changePasswordSuccess'),
-                    type: 'is-success',
-                    position: 'is-top',
-                });
-            })
-                .catch(error => {});
         }
     },
 }

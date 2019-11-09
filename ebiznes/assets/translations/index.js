@@ -43,6 +43,7 @@ const i18n = new VueI18n({
                 editHeader: 'Edit your account',
                 passwordChangeHeader: 'Change your password',
                 yourServices: 'Your services',
+                passwordChangeMessage: 'You have to login again after changing password',
             },
             service: {
                 createHeader: 'Create your service',
@@ -124,6 +125,7 @@ const i18n = new VueI18n({
                 editHeader: 'Edytuj swoje konto',
                 passwordChangeHeader: 'Zmień swoje hasło',
                 yourServices: 'Twoje usługi',
+                passwordChangeMessage: 'Zmiana hasła wymaga ponownego logowania',
                 privacyMessage: `Klikając przycisk Zarejestruj, przyjmuję do wiadomości,
                     że ServiceRent wykorzystuje moje dane zgodnie z <a href="/privacy/"
                     >Polityką prywatności.</a>`

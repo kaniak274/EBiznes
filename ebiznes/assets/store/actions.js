@@ -122,14 +122,14 @@ export default {
         )
         .then(response => {
             this.loading = false;
-            return response;
+            commit('logout');
+            router.push({ name: 'login' });
         })
         .catch(error => {
             const { response: { data }} = error;
             commit('setError', data);
 
             this.loading = false;
-            return Promise.reject(error);
         })
     },
 
