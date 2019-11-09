@@ -205,6 +205,7 @@ export default {
     },
 
     created() {
+        window.scrollTo(0, 0);
         this.loadSingleService(this.$route.params.id);
 
         if (this.authorizationGranted) {
