@@ -14,4 +14,5 @@ urlpatterns = [
     path('services/edit/<int:id>', views.base_view_id),
     path('password-change/', views.base_view),
     path('your-account/', views.base_view),
+    path('privacy/', views.base_view),
 ]

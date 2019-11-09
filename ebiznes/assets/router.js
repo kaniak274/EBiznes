@@ -14,6 +14,7 @@ import UserServices from './views/UserServices';
 import ServiceEdit from './views/ServiceEdit';
 import PasswordChange from './views/PasswordChange';
 import YourAccount from './views/YourAccount';
+import Privacy from './views/Privacy';
 
 Vue.use(Router)
 
@@ -76,6 +77,11 @@ const router = new Router({
             name: 'your-account',
             component: YourAccount,
             beforeEnter: checkNotLogged,
+        },
+        {
+            path: '/privacy/',
+            name: 'privacy',
+            component: Privacy,
         },
         {
             path: '/services/',

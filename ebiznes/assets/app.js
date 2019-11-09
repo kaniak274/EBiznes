@@ -30,6 +30,7 @@ import {
     Select,
     Rate,
     Modal,
+    Checkbox,
 } from 'buefy'
 
 import './styles/main.scss';
@@ -46,6 +47,7 @@ Vue.use(Navbar);
 Vue.use(Select);
 Vue.use(Rate);
 Vue.use(Modal);
+Vue.use(Checkbox);
 
 Vue.component('errors', Errors);
 Vue.component('logout', Logout);

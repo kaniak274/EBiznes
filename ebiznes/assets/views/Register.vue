@@ -84,6 +84,8 @@
                         <errors property='last_name'/>
                         <errors property='non_field_errors'/>
 
+                        <p v-html="$t('message.privacyMessage')"></p>
+
                         <b-button
                             type="is-primary is-medium"
                             @click="register">
