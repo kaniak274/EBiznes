@@ -34,9 +34,21 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_framework_jwt',
+
+    'django_filters',
+
+    # Authentication packages
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'rest_auth.registration',
+    'rest_auth',
 
     'ebiznes.apps.common',
     'ebiznes.apps.users',
+    'ebiznes.apps.service',
 ]
 
 MIDDLEWARE = [
@@ -94,5 +106,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
 MEDIA_URL = '/uploads/'
 
-AUTH_USER_MODEL = 'users.User'
-
+from .auth import *
