@@ -64,15 +64,16 @@ class Rent(TimeStampedModel):
     address = models.CharField(max_length=255, null=True, blank=True)
 
     def save(self, *args, **kwargs):
-        msg_ctx = {
-            'name': self.service.name,
-        }
+        if self.status == APPROVED:
+            msg_ctx = {
+                'name': self.service.name,
+            }
 
-        send_email(
-            'ServiceRent approval',
-            'service/email/approval.html',
-            [self.user.email],
-            msg_ctx,
-        )
+            send_email(
+                'ServiceRent approval',
+                'service/email/approval.html',
+                [self.user.email],
+                msg_ctx,
+            )
 
         super().save(*args, **kwargs)
