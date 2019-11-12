@@ -43,7 +43,7 @@ class Service(TimeStampedModel):
             ratings_sum = sum([float(r.rating) for r in ratings])
             result = ratings_sum / ratings.count()
         else:
-            result = "No Rating"
+            result = 0
         return result
 
 class Rating(TimeStampedModel):
