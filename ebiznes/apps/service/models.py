@@ -38,9 +38,13 @@ class Service(TimeStampedModel):
 
     @property
     def rate(self):
-        ### TODO: ADD RATING CALCULATION HERE
-        return 2.5
-
+        ratings = self.ratings.all()
+        if ratings:
+            ratings_sum = sum([float(r.rating) for r in ratings])
+            result = ratings_sum / ratings.count()
+        else:
+            result = 0
+        return result
 
 class Rating(TimeStampedModel):
     rating = models.DecimalField(_('Rating'), max_digits=3, decimal_places=2,
