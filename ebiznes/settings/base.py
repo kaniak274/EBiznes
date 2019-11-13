@@ -86,9 +86,9 @@ from .db import *
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pl'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Warsaw'
 
 USE_I18N = True
 
@@ -107,3 +107,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/uploads/'
 
 from .auth import *
+
+from django.utils.translation import gettext_lazy as _
+
+#Example for English and German
+LANGUAGES = [('pl', _('Polish'))]
+
+LOCALES_PATHS = [
+    os.path.join(BASE_DIR, 'locales')
+]
