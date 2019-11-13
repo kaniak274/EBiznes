@@ -1,17 +1,17 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# ServiceRent translation file.
+# Copyright (C) 2019
+# This file is distributed under the same license as the ServiceRent package.
+# kaniak274@gmail.com, 2019.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-13 17:54+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2019-11-13 18:06+0100\n"
+"PO-Revision-Date: 2019-11-13 18:06+0100\n"
+"Last-Translator: kaniak274@gmail.com\n"
+"Language-Team: pl\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,6 +19,98 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
 "%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: apps/service/apps.py:6
+msgid "Services"
+msgstr "Usługi"
+
+#: apps/service/models.py:18
+msgid "profession"
+msgstr "rodzaj uługi"
+
+#: apps/service/models.py:19
+msgid "professions"
+msgstr "rodzaje usług"
+
+#: apps/service/models.py:27 apps/service/models.py:64
+msgid "Owner"
+msgstr "Właściciel"
+
+#: apps/service/models.py:29
+msgid "Name"
+msgstr "Nazwa"
+
+#: apps/service/models.py:30
+msgid "Description"
+msgstr "Opis"
+
+#: apps/service/models.py:31
+msgid "City"
+msgstr "Miasto"
+
+#: apps/service/models.py:33
+msgid "Profession"
+msgstr "Rodzaj usługi"
+
+#: apps/service/models.py:34
+msgid "Service logo"
+msgstr "Logo usługi"
+
+#: apps/service/models.py:35
+msgid "Street"
+msgstr "Ulica"
+
+#: apps/service/models.py:36 apps/service/models.py:84 apps/users/models.py:7
+msgid "Phone number"
+msgstr "Numer telefonu"
+
+#: apps/service/models.py:39
+msgid "service"
+msgstr "usługa"
+
+#: apps/service/models.py:40
+msgid "services"
+msgstr "usługi"
+
+#: apps/service/models.py:60
+msgid "Rating"
+msgstr "Ocena"
+
+#: apps/service/models.py:66 apps/service/models.py:80
+msgid "Service"
+msgstr "Usługa"
+
+#: apps/service/models.py:68
+msgid "Comment"
+msgstr "Komentarz"
+
+#: apps/service/models.py:72
+msgid "rating"
+msgstr "ocena"
+
+#: apps/service/models.py:73
+msgid "ratings"
+msgstr "oceny"
+
+#: apps/service/models.py:78
+msgid "User"
+msgstr "Użytkownik"
+
+#: apps/service/models.py:83
+msgid "Status"
+msgstr "Status"
+
+#: apps/service/models.py:85 apps/users/models.py:8
+msgid "Address"
+msgstr "Adres"
+
+#: apps/service/models.py:88
+msgid "rent"
+msgstr "wynajem"
+
+#: apps/service/models.py:89
+msgid "rents"
+msgstr "wynajmy"
 
 #: settings/base.py:114
 msgid "Polish"

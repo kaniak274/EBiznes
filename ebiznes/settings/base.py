@@ -113,6 +113,6 @@ from django.utils.translation import gettext_lazy as _
 #Example for English and German
 LANGUAGES = [('pl', _('Polish'))]
 
-LOCALES_PATHS = [
-    os.path.join(BASE_DIR, 'locales')
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale')
 ]
