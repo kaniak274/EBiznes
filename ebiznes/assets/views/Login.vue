@@ -51,10 +51,12 @@
                         <errors property='password' />
                         <errors property='non_field_errors' />
 
-                        <b-button type="is-primary is-medium"
-                            @click="login">
-                            {{ $t('message.loginBtn') }}
-                        </b-button>
+                        <b-button
+                            type="is-primary is-medium"
+                            @click="login"
+                            tag="input"
+                            native-type="submit"
+                            :value="$t('message.loginBtn')" />
 
                         <div class="row">
                             <div class="col-12 mt-3">

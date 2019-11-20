@@ -99,7 +99,7 @@
             cursor: default;
         }
 
-        input {
+        input:not([type="submit"]) {
             font-size: 1.2em;
             height: 2em;
             padding: 15px;

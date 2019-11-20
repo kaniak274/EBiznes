@@ -93,9 +93,10 @@
 
                         <b-button
                             type="is-primary is-medium"
-                            @click="register">
-                            {{ $t('message.registerBtn') }}
-                        </b-button>
+                            @click="register"
+                            tag="input"
+                            native-type="submit"
+                            :value="$t('message.registerBtn')"/>
                     </form>
                 </div>
             </div>
