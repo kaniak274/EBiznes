@@ -19,3 +19,5 @@ MEDIA_ROOT = os.path.join(ENV_PATH, '../../public/uploads/')
 STATICFILES_DIRS = [
     os.path.join(ENV_PATH, '../static', 'dist')
 ]
+
+from .email import *

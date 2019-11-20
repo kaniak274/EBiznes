@@ -115,3 +115,4 @@ venv.bak/
 db.py
 /ebiznes/uploads/*
 public/
+email.py

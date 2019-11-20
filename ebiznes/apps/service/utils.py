@@ -11,5 +11,6 @@ def send_email(subject, html_template, to, msg_ctx = None):
         subject,
         message,
         settings.DEFAULT_FROM_EMAIL,
-        to
+        to,
+        html_message=strip_tags(message)
     )
