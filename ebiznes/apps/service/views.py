@@ -1,7 +1,9 @@
 from django.http import Http404
+from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 
 from rest_framework import status, viewsets
+from rest_framework.exceptions import PermissionDenied
 from rest_framework.decorators import action
 from rest_framework.generics import (CreateAPIView, ListAPIView,
     RetrieveAPIView, UpdateAPIView)
@@ -103,3 +105,19 @@ class RentListAPIView(ListAPIView):
     permission_classes = [IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
     filterset_class = RentFilter
+
+
+class CreatePriceListRecord(CreateAPIView):
+    serializer_class = PriceListSerializer
+    permission_classes = [IsAuthenticated]
+
+    def check_permissions(self, request):
+        super().check_permissions(request)
+
+        service = request.data.get('service', None)
+
+        if service:
+            service = get_object_or_404(Service, id=service)
+
+            if not service.owner == request.user:
+                raise PermissionDenied()

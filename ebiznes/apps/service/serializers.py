@@ -8,7 +8,10 @@ from .models import *
 class PriceListSerializer(serializers.ModelSerializer):
     class Meta:
         model = PriceList
-        fields = ('pk', 'name', 'price')
+        fields = ('pk', 'name', 'price', 'service')
+        extra_kwargs = {
+            'service': {'write_only': True}
+        }
 
 
 class ProfessionSerializer(serializers.ModelSerializer):
@@ -38,13 +41,12 @@ class ServiceSerializer(serializers.ModelSerializer):
     profession = ProfessionSerializer(read_only=True)
     profession_id = serializers.PrimaryKeyRelatedField(
         write_only=True, queryset=Profession.objects.all(), source='profession')
-    price_list = PriceListSerializer(read_only=True, many=True)
 
     class Meta:
         model = Service
         fields = ('pk', 'name', 'description', 'owner', 'profession',
             'profession_id', 'city', 'street', 'service_logo', 'phone_number',
-            'created', 'rate', 'price_list')
+            'created', 'rate')
         extra_kwargs = {
             'owner': {'required': False},
         }
@@ -52,11 +54,12 @@ class ServiceSerializer(serializers.ModelSerializer):
 
 class DetailServiceSerializer(ServiceSerializer):
     random_ratings = RatingSerializer(many=True, read_only=True)
+    price_list = PriceListSerializer(read_only=True, many=True)
 
     class Meta(ServiceSerializer.Meta):
         fields = ('pk', 'name', 'description', 'owner', 'profession',
             'profession_id', 'city', 'street', 'service_logo', 'phone_number',
-            'created', 'rate', 'random_ratings')
+            'created', 'rate', 'random_ratings', 'price_list')
 
 
 class RentSerializer(serializers.ModelSerializer):

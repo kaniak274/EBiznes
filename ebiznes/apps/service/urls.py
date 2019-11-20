@@ -13,4 +13,5 @@ urlpatterns = [
     path('ratings/<int:pk>/', views.UpdateRating.as_view(), name='ratings-update'),
     path('check-rating/<int:pk>/', views.CheckRatingAPIView.as_view(), name='check-rating'),
     path('rents/', views.RentListAPIView.as_view(), name='rents'),
+    path('price-list/', views.CreatePriceListRecord.as_view(), name='price-list'),
 ] + router.urls
