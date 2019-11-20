@@ -3,8 +3,14 @@
 <!DOCTYPE html>
 <html>
 <body>
-    {% blocktrans %}
-    <p>{{ name }} has approved your request</p>
-    {% endblocktrans %}
+    {% if approved %}
+        {% blocktrans %}
+        <p>Service {{ name }} has approved your request</p>
+        {% endblocktrans %}
+    {% else %}
+        {% blocktrans %}
+        <p>Service {{ name }} has rejected your request</p>
+        {% endblocktrans %}
+    {% endif %}
 </body>
 </html>

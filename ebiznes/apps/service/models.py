@@ -89,10 +89,17 @@ class Rent(TimeStampedModel):
         verbose_name_plural = _('rents')
 
     def save(self, *args, **kwargs):
-        if self.status == APPROVED:
-            msg_ctx = {
-                'name': self.service.name,
-            }
+        if self.status == APPROVED or self.status == NOT_APPROVED:
+            if self.status == APPROVED:
+                msg_ctx = {
+                    'name': self.service.name,
+                    'approved': True
+                }
+            else:
+                msg_ctx = {
+                    'name': self.service.name,
+                    'approved': False
+                }
 
             send_email(
                 'ServiceRent approval',
