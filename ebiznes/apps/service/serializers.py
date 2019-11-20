@@ -5,6 +5,12 @@ from rest_framework import serializers
 from .models import *
 
 
+class PriceListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PriceList
+        fields = ('pk', 'name', 'price')
+
+
 class ProfessionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profession
@@ -32,12 +38,13 @@ class ServiceSerializer(serializers.ModelSerializer):
     profession = ProfessionSerializer(read_only=True)
     profession_id = serializers.PrimaryKeyRelatedField(
         write_only=True, queryset=Profession.objects.all(), source='profession')
+    price_list = PriceListSerializer(read_only=True, many=True)
 
     class Meta:
         model = Service
         fields = ('pk', 'name', 'description', 'owner', 'profession',
             'profession_id', 'city', 'street', 'service_logo', 'phone_number',
-            'created', 'rate')
+            'created', 'rate', 'price_list')
         extra_kwargs = {
             'owner': {'required': False},
         }

@@ -16,7 +16,7 @@ from .serializers import *
 class ServiceViewset(viewsets.ModelViewSet):
     model = Service
     queryset = Service.objects.all().order_by('-id').prefetch_related(
-        'ratings'
+        'ratings', 'price_list'
     ).select_related('profession')
     filter_backends = [DjangoFilterBackend]
     filterset_class = ServiceFilter

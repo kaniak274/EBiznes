@@ -109,3 +109,11 @@ class Rent(TimeStampedModel):
             )
 
         super().save(*args, **kwargs)
+
+
+class PriceList(models.Model):
+    service = models.ForeignKey(Service,
+        verbose_name=_("Service"), on_delete=models.CASCADE, related_name="price_list")
+
+    name = models.CharField(_("Name"), max_length=100)
+    price = models.DecimalField(_('Price'), max_digits=6, decimal_places=2)

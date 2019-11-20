@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-20 17:50+0100\n"
+"POT-Creation-Date: 2019-11-20 18:24+0100\n"
 "PO-Revision-Date: 2019-11-13 18:06+0100\n"
 "Last-Translator: kaniak274@gmail.com\n"
 "Language-Team: pl\n"
@@ -36,7 +36,7 @@ msgstr "rodzaje usług"
 msgid "Owner"
 msgstr "Właściciel"
 
-#: apps/service/models.py:29
+#: apps/service/models.py:29 apps/service/models.py:118
 msgid "Name"
 msgstr "Nazwa"
 
@@ -77,6 +77,7 @@ msgid "Rating"
 msgstr "Ocena"
 
 #: apps/service/models.py:66 apps/service/models.py:80
+#: apps/service/models.py:116
 msgid "Service"
 msgstr "Usługa"
 
@@ -112,16 +113,16 @@ msgstr "wynajem"
 msgid "rents"
 msgstr "wynajmy"
 
+#: apps/service/models.py:119
+msgid "Price"
+msgstr "Cena"
+
 #: settings/base.py:114
 msgid "Polish"
 msgstr "Polski"
 
 #: templates/service/email/approval.html:7
 #, python-format
-#| msgid ""
-#| "\n"
-#| "    <p>%(name)s has approved your request</p>\n"
-#| "    "
 msgid ""
 "\n"
 "        <p>Service %(name)s has approved your request</p>\n"
@@ -133,10 +134,6 @@ msgstr ""
 
 #: templates/service/email/approval.html:11
 #, python-format
-#| msgid ""
-#| "\n"
-#| "    <p>%(name)s has approved your request</p>\n"
-#| "    "
 msgid ""
 "\n"
 "        <p>Service %(name)s has rejected your request</p>\n"
