@@ -5,7 +5,6 @@
         <div class="mt-5">
             <b-table
                 :data="rents"
-                :columns="columns"
                 :striped="true">
                 <template slot-scope="props">
                     <b-table-column field="service_name" :label="$t('rent.serviceLabel')">
