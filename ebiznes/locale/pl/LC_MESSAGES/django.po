@@ -26,7 +26,7 @@ msgstr "Usługi"
 
 #: apps/service/choices.py:10
 msgid "Waiting for approval"
-msgstr "Oczekuje na zatwierdzenie"
+msgstr "Oczekuję na zatwierdzenie"
 
 #: apps/service/choices.py:11
 msgid "Not approved"
