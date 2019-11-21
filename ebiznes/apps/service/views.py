@@ -5,7 +5,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status, viewsets
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.decorators import action
-from rest_framework.generics import (CreateAPIView, ListAPIView,
+from rest_framework.generics import (CreateAPIView, DestroyAPIView, ListAPIView,
     RetrieveAPIView, UpdateAPIView)
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -121,3 +121,25 @@ class CreatePriceListRecord(CreateAPIView):
 
             if not service.owner == request.user:
                 raise PermissionDenied()
+
+class RemovePriceListRecord(DestroyAPIView):
+    permission_classes = [IsAuthenticated]
+    queryset = PriceList.objects.all()
+
+    def check_object_permissions(self, request, obj):
+        super().check_object_permissions(request, obj)
+
+        if not obj.service.owner == request.user:
+            raise PermissionDenied()
+
+
+class UpdatePriceListRecord(UpdateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = PriceListSerializer
+    queryset = PriceList.objects.all()
+
+    def check_object_permissions(self, request, obj):
+        super().check_object_permissions(request, obj)
+
+        if not obj.service.owner == request.user:
+            raise PermissionDenied()
