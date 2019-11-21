@@ -1,14 +1,14 @@
-from django.utils.translation import gettext as _
+from django.utils.translation import ugettext_lazy as _
 
 
-WAITING = 'Waiting for approval'
-APPROVED = 'Approved'
-DONE = 'Done'
-NOT_APPROVED = 'Not approved'
+WAITING = 'WAITING_FOR_APPROVAL'
+APPROVED = 'APPROVED'
+DONE = 'DONE'
+NOT_APPROVED = 'NOT_APPROVED'
 
 STATUS_CHOICES = (
-    (WAITING, _(WAITING)),
-    (NOT_APPROVED, _(NOT_APPROVED)),
-    (APPROVED, _(APPROVED)),
-    (DONE, _(DONE)),
+    (WAITING, _('Waiting for approval')),
+    (NOT_APPROVED, _('Not approved')),
+    (APPROVED, _('Approved')),
+    (DONE, _('Done')),
 )

@@ -11,16 +11,16 @@
                         {{ props.row.service_name }}
                     </b-table-column>
 
-                    <b-table-column field="status" label="Status">
-                        {{ props.row.status }}
+                    <b-table-column field="status_display" label="Status">
+                        {{ props.row.status_display }}
                     </b-table-column>
 
                     <b-table-column field="address" :label="$t('rent.addressLabel')">
                         {{ props.row.address }}
                     </b-table-column>
 
-                    <b-table-column field="created" :label="$t('rent.dateLabel')">
-                        {{ props.row.created.split('T')[0] }}
+                    <b-table-column field="modified" :label="$t('rent.dateLabel')">
+                        {{ props.row.modified.split('T')[0] }}
                     </b-table-column>
                 </template>
             </b-table>

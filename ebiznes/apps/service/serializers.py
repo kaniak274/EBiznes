@@ -64,11 +64,16 @@ class DetailServiceSerializer(ServiceSerializer):
 
 class RentSerializer(serializers.ModelSerializer):
     service_name = serializers.CharField(max_length=255, read_only=True, source='service.name')
+    status_display = serializers.SerializerMethodField()
 
     class Meta:
         model = Rent
-        fields = ('pk', 'created', 'service', 'user',
-            'status', 'phone_number', 'address', 'service_name')
+        fields = ('pk', 'created', 'service', 'user', 'modified',
+            'status', 'phone_number', 'address', 'service_name', 'status_display')
         extra_kwargs = {
             'service': {'write_only': True},
         }
+
+    def get_status_display(self, obj):
+        return obj.get_status_display()
+

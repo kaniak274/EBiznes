@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-20 18:24+0100\n"
+"POT-Creation-Date: 2019-11-21 17:21+0100\n"
 "PO-Revision-Date: 2019-11-13 18:06+0100\n"
 "Last-Translator: kaniak274@gmail.com\n"
 "Language-Team: pl\n"
@@ -23,6 +23,22 @@ msgstr ""
 #: apps/service/apps.py:6
 msgid "Services"
 msgstr "Usługi"
+
+#: apps/service/choices.py:10
+msgid "Waiting for approval"
+msgstr "Oczekuje na zatwierdzenie"
+
+#: apps/service/choices.py:11
+msgid "Not approved"
+msgstr "Nie zatwierdzono"
+
+#: apps/service/choices.py:12
+msgid "Approved"
+msgstr "Zatwierdzone"
+
+#: apps/service/choices.py:13
+msgid "Done"
+msgstr "Zakończone"
 
 #: apps/service/models.py:18
 msgid "profession"

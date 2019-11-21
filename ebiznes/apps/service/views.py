@@ -101,7 +101,7 @@ class CheckRatingAPIView(RetrieveAPIView):
 
 class RentListAPIView(ListAPIView):
     serializer_class = RentSerializer
-    queryset = Rent.objects.all()
+    queryset = Rent.objects.all().order_by('-modified')
     permission_classes = [IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
     filterset_class = RentFilter
