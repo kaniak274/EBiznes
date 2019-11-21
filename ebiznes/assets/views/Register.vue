@@ -1,6 +1,7 @@
 <template>
     <div id="Register">
         <div class="container-fluid register-background">
+            <b-loading :active.sync="isLoading"/>
             <div class="row">
                 <div class="col-12 nav-section">
                     <div class="row">
@@ -104,7 +105,7 @@
     </div>
 </template>
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters, mapState } from 'vuex';
 
 export default {
     name: 'Register',
@@ -122,6 +123,9 @@ export default {
 
     computed: {
         ...mapGetters(['hasFieldError']),
+        ...mapState({
+            isLoading: state => state.isLoading,
+        }),
     },
 
     methods: {

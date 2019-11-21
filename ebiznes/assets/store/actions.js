@@ -4,8 +4,10 @@ import Toastr from 'vue-toastr';
 import router from './../router';
 
 export default {
-    register({ commit }, payload) {
-        axios.post('/rest-auth/registration/', payload)
+    async register({ commit, state }, payload) {
+        state.isLoading = true;
+
+        await axios.post('/rest-auth/registration/', payload)
         .then(({ data }) => {
             commit('setUser', data)
             router.push({ name: 'service-list' });
@@ -17,12 +19,15 @@ export default {
 
             commit('setError', data);
         })
+
+        state.isLoading = false;
     },
 
-    login({ commit }, payload) {
+    async login({ commit, state }, payload) {
+        state.isLoading = true;
         const { username, password } = payload;
 
-        axios.post('/rest-auth/login/', {
+        await axios.post('/rest-auth/login/', {
             username,
             password,
         })
@@ -37,6 +42,8 @@ export default {
 
             commit('setError', data);
         })
+
+        state.isLoading = false;
     },
 
     logout({ commit, getters }) {

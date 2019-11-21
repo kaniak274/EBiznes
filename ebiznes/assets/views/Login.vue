@@ -1,6 +1,7 @@
 <template>
     <div id="Login">
         <div class="container-fluid login-background">
+            <b-loading :active.sync="isLoading"/>
             <div class="row">
                 <div class="col-12 nav-section">
                     <dir class="row">
@@ -86,7 +87,7 @@
     </div>
 </template>
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters, mapState } from 'vuex';
 
 export default {
     name: 'Login',
@@ -100,6 +101,9 @@ export default {
 
     computed: {
         ...mapGetters(['hasError']),
+        ...mapState({
+            isLoading: state => state.isLoading,
+        }),
     },
 
     methods: {
