@@ -89,7 +89,7 @@ export default {
         },
     },
 
-    mounted: function() {
+    created: function() {
         (this.url !== null) ? this.loadServicePage(this.url) : this.loadServicePage();
     },
 
