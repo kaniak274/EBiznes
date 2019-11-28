@@ -83,6 +83,7 @@ class Rent(TimeStampedModel):
         verbose_name=_('Status'))
     phone_number = models.CharField(_('Phone number'), max_length=20, null=True, blank=True)
     address = models.CharField(_('Address'), max_length=255, null=True, blank=True)
+    total_price = models.DecimalField(_('Total price'), max_digits=10, decimal_places=2)
 
     class Meta:
         verbose_name = _('rent')

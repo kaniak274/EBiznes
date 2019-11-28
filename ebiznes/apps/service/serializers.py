@@ -69,7 +69,8 @@ class RentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rent
         fields = ('pk', 'created', 'service', 'user', 'modified',
-            'status', 'phone_number', 'address', 'service_name', 'status_display')
+            'status', 'phone_number', 'address', 'service_name', 'status_display',
+            'total_price')
         extra_kwargs = {
             'service': {'write_only': True},
         }
