@@ -34,4 +34,5 @@ export const message_en = {
     passwordChangeHeader: 'Change your password',
     yourServices: 'Your services',
     passwordChangeMessage: 'You have to login again after changing password',
+    about: 'About',
 };

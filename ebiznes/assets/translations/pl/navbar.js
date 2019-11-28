@@ -9,4 +9,5 @@ export const navbar_pl = {
     register: 'Rejestracja',
     editAccount: 'Edytuj konto',
     rentHistory: 'Historia wynajmów',
+    about: 'O nas',
 };

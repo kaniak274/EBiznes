@@ -9,4 +9,5 @@ export const navbar_en = {
     register: 'Sign up',
     editAccount: 'Edit account',
     rentHistory: 'Rent history',
+    about: 'About',
 };

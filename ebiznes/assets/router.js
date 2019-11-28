@@ -16,6 +16,7 @@ import PasswordChange from './views/PasswordChange';
 import YourAccount from './views/YourAccount';
 import Privacy from './views/Privacy';
 import RentHistory from './views/RentHistory';
+import About from './views/About';
 
 Vue.use(Router)
 
@@ -89,6 +90,11 @@ const router = new Router({
             name: 'rent-history',
             component: RentHistory,
             beforeEnter: checkNotLogged,
+        },
+        {
+            path: '/about/',
+            name: 'about',
+            component: About,
         },
         {
             path: '/services/',

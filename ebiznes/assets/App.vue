@@ -41,6 +41,9 @@
                 <b-navbar-item tag="router-link" :to="{ name: 'rent-history' }">
                     {{ $t('navbar.rentHistory') }}
                 </b-navbar-item>
+                <b-navbar-item tag="router-link" :to="{ name: 'about' }">
+                    {{ $t('navbar.about') }}
+                </b-navbar-item>
             </template>
 
             <template slot="end">
@@ -71,6 +74,9 @@
                 </b-navbar-item>
                 <b-navbar-item tag="router-link" :to="{ name: 'login' }">
                     {{ $t('navbar.login') }}
+                </b-navbar-item>
+                <b-navbar-item tag="router-link" :to="{ name: 'about' }">
+                    {{ $t('navbar.about') }}
                 </b-navbar-item>
             </template>
         </b-navbar>

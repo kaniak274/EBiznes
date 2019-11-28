@@ -36,5 +36,6 @@ export const message_pl = {
     passwordChangeMessage: 'Zmiana hasła wymaga ponownego logowania',
     privacyMessage: `Klikając przycisk Zarejestruj, przyjmuję do wiadomości,
         że ServiceRent wykorzystuje moje dane zgodnie z <a href="/privacy/"
-        >Polityką prywatności.</a>`
+        >Polityką prywatności.</a>`,
+    about: 'O nas',
 };

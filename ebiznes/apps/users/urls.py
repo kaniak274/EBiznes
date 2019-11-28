@@ -16,4 +16,5 @@ urlpatterns = [
     path('your-account/', views.base_view),
     path('privacy/', views.base_view),
     path('rent-history/', views.base_view),
+    path('about/', views.base_view),
 ]
