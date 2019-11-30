@@ -38,4 +38,5 @@ export const message_pl = {
         że ServiceRent wykorzystuje moje dane zgodnie z <a href="/privacy/"
         >Polityką prywatności.</a>`,
     about: 'O nas',
+    homePage: 'STRONA GŁÓWNA',
 };

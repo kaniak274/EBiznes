@@ -21,7 +21,7 @@
                                 <router-link
                                     class="link-register ml-3"
                                     :to="{ name: 'home' }">
-                                    {{ $t('navbar.home') }}
+                                    {{ $t('message.homePage') }}
                                 </router-link>
                             </div>
                         </div>
