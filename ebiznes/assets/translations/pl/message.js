@@ -39,4 +39,7 @@ export const message_pl = {
         >Polityką prywatności.</a>`,
     about: 'O nas',
     homePage: 'STRONA GŁÓWNA',
+    privacy: 'Polityka prywatności',
+    rules: 'Regulamin',
+    contact: 'Kontakt',
 };

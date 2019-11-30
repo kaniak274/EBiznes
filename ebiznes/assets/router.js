@@ -17,6 +17,8 @@ import YourAccount from './views/YourAccount';
 import Privacy from './views/Privacy';
 import RentHistory from './views/RentHistory';
 import About from './views/About';
+import Contact from './views/Contact';
+import Rules from './views/Rules';
 
 Vue.use(Router)
 
@@ -84,6 +86,16 @@ const router = new Router({
             path: '/privacy/',
             name: 'privacy',
             component: Privacy,
+        },
+        {
+            path: '/contact/',
+            name: 'contact',
+            component: Contact,
+        },
+        {
+            path: '/rules/',
+            name: 'rules',
+            component: Rules,
         },
         {
             path: '/rent-history/',

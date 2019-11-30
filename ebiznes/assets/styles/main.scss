@@ -13,3 +13,26 @@
 .textarea {
     resize: none;
 }
+
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-content {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.sticky-footer {
+    background-color: #363636;
+    flex-shrink: 0;
+    color: white;
+    padding: 20px;
+
+    .footer-link {
+        color: white;
+    }
+}
+
