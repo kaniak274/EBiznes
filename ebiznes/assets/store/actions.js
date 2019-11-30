@@ -9,7 +9,8 @@ export default {
 
         await axios.post('/rest-auth/registration/', payload)
         .then(({ data }) => {
-            commit('setUser', data)
+            commit('setUser', data);
+            state.isLoading = false;
             router.push({ name: 'service-list' });
         })
         .catch(error => {
@@ -17,10 +18,9 @@ export default {
                 data
             }} = error;
 
+            state.isLoading = false;
             commit('setError', data);
         })
-
-        state.isLoading = false;
     },
 
     async login({ commit, state }, payload) {
@@ -33,6 +33,7 @@ export default {
         })
         .then((response) => {
             commit('setUser', response.data)
+            state.isLoading = false;
             router.push({ name: 'service-list' });
         })
         .catch(error => {
@@ -40,10 +41,10 @@ export default {
                 data
             }} = error;
 
+            state.isLoading = false;
+
             commit('setError', data);
         })
-
-        state.isLoading = false;
     },
 
     logout({ commit, getters }) {
