@@ -29,7 +29,7 @@
         <main class="wrapper" v-else>
             <b-navbar v-if="authorizationGranted" type="is-dark">
                 <template slot="brand">
-                    Service rent
+                    <img src="./images/logo.png"/>
                 </template>
                 <template slot="start">
                     <b-navbar-item tag="router-link" :to="{ name: 'service-list' }">
@@ -66,7 +66,7 @@
 
             <b-navbar v-else-if="!authorizationGranted && shouldDisplayNavbar($route.name)" type="is-dark">
                 <template slot="brand">
-                    Service rent
+                    <img src="./images/logo.png"/>
                 </template>
                 <template slot="start">
                     <b-navbar-item tag="router-link" :to="{ name: 'service-list' }">

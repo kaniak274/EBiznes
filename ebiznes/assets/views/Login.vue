@@ -7,7 +7,7 @@
                     <dir class="row">
                         <div class="col-6">
                             <div class="logo-col">
-                                <h1>Service Rent</h1>
+                                <img src="../images/logo-bigger.png"/>
                             </div>
                         </div>
                         <div class="col-6">
