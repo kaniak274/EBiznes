@@ -83,6 +83,12 @@
                     </div>
                </div>
             </div>
+            <div class="row fixed-bottom text-white ml-2 image-text">
+                <p>
+                https://www.pexels.com/photo/man-in-green-polo-shirt-3084330/
+                Photo by Ekrulila from Pexels
+                </p>
+            </div>
         </div>
     </div>
 </template>
