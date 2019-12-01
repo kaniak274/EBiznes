@@ -74,6 +74,8 @@
                     </div>
                 </div>
             </div>
+
+            <client-list class="client-list"/>
         </div>
     </div>
 </template>
@@ -113,7 +115,7 @@ export default {
                     position: 'is-top',
                 });
             }).catch(error => {
-                const { response: { data: { price = [], service = [], name = []} }} = error;
+                const { response: { data: { price = [], service = [], name = [] }}} = error;
 
                 price.push.apply(price, service);
                 price.push.apply(price, name);

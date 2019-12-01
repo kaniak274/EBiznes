@@ -1,3 +1,5 @@
+from django.contrib.auth import get_user_model
+
 from rest_auth.serializers import UserDetailsSerializer
 
 from rest_framework import serializers
@@ -65,12 +67,15 @@ class DetailServiceSerializer(ServiceSerializer):
 class RentSerializer(serializers.ModelSerializer):
     service_name = serializers.CharField(max_length=255, read_only=True, source='service.name')
     status_display = serializers.SerializerMethodField()
+    user = UserDetailsSerializer(read_only=True)
+    user_id = serializers.PrimaryKeyRelatedField(
+        write_only=True, queryset=get_user_model().objects.all(), source='user')
 
     class Meta:
         model = Rent
         fields = ('pk', 'created', 'service', 'user', 'modified',
             'status', 'phone_number', 'address', 'service_name', 'status_display',
-            'total_price')
+            'total_price', 'user_id')
         extra_kwargs = {
             'service': {'write_only': True},
         }

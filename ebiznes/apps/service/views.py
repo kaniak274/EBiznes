@@ -49,7 +49,7 @@ class ServiceViewset(viewsets.ModelViewSet):
         data = request.data
         data.update({
             'service': pk,
-            'user': request.user.pk,
+            'user_id': request.user.pk,
         })
 
         serializer = RentSerializer(data=data)

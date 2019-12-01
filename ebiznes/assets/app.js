@@ -11,6 +11,7 @@ import ServiceTable from './components/ServiceTable';
 import PasswordReset from './components/PasswordReset';
 import ServiceForm from './components/ServiceForm';
 import Rent from './components/Rent';
+import ClientList from './components/ClientList';
 
 /* Import of file with all translations */
 import i18n from './translations';
@@ -58,6 +59,7 @@ Vue.component('service-table', ServiceTable);
 Vue.component('password-reset', PasswordReset);
 Vue.component('service-form', ServiceForm);
 Vue.component('rent', Rent);
+Vue.component('client-list', ClientList);
 
 import Buefy from 'buefy';
 

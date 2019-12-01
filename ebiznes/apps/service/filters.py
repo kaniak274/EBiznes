@@ -1,3 +1,6 @@
+from django.db.models.functions import Concat
+from django.db.models import Value
+
 from django_filters import rest_framework as filters
 
 from .models import *
@@ -47,6 +50,14 @@ class ServiceFilter(filters.FilterSet):
 
 
 class RentFilter(filters.FilterSet):
+    full_name = filters.CharFilter(method='filter_full_name')
+    date_before = filters.DateFilter(field_name='modified', lookup_expr='lte')
+    date_after = filters.DateFilter(field_name='modified', lookup_expr='gte')
+
+    def filter_full_name(self, queryset, name, value):
+        queryset = queryset.annotate(fullname=Concat('user__first_name', Value(' '), 'user__last_name'))
+        return queryset.filter(fullname__icontains=value)
+
     class Meta:
         model = Rent
-        fields = ('user',)
+        fields = ('user', 'service', 'status', 'full_name', 'date_before', 'date_after')
