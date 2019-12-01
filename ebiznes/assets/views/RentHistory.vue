@@ -5,7 +5,8 @@
         <div class="mt-5">
             <b-table
                 :data="rents"
-                :striped="true">
+                :striped="true"
+                v-if="rents.length !== 0">
                 <template slot-scope="props">
                     <b-table-column field="service_name" :label="$t('rent.serviceLabel')">
                         {{ props.row.service_name }}
@@ -24,6 +25,9 @@
                     </b-table-column>
                 </template>
             </b-table>
+            <div class="text-center" v-else>
+                <p>Brak dostępnych danych</p>
+            </div>
         </div>
     </div>
 </template>
