@@ -2,6 +2,10 @@
     <div>
         <b-loading :active.sync="isLoading"/>
 
+        <p v-if="services.results.length == 0" class="text-center">
+            Brak danych
+        </p>
+
         <div class="grid-start">
             <div class="service-grid" v-for="service in services.results" :key="service.id">
                 <div class="service-content">
