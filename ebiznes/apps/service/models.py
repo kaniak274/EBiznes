@@ -67,6 +67,9 @@ class Rating(TimeStampedModel):
 
     comment = models.TextField(_('Comment'), null=True, blank=True)
 
+    def __str__(self):
+        return 'Rating {} - {}'.format(self.service.name, self.owner.username)
+
     class Meta:
         unique_together = ('owner', 'service')
         verbose_name = _('rating')
@@ -111,6 +114,9 @@ class Rent(TimeStampedModel):
 
         super().save(*args, **kwargs)
 
+    def __str__(self):
+        return 'Rent {} - {}'.format(self.service.name, self.user.username)
+
 
 class PriceList(models.Model):
     service = models.ForeignKey(Service,
@@ -118,3 +124,6 @@ class PriceList(models.Model):
 
     name = models.CharField(_("Name"), max_length=100)
     price = models.DecimalField(_('Price'), max_digits=6, decimal_places=2)
+
+    def __str__(self):
+        return self.name
