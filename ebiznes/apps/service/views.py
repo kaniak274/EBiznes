@@ -46,10 +46,21 @@ class ServiceViewset(viewsets.ModelViewSet):
     def rent_service(self, request, pk=None):
         service = self.get_object()
 
+        price_list = request.data.pop(price_list, [])
+
+        if not price_list:
+            return Response(
+                {'price_list': ['Musisz wybrać co najmniej jeden rekord']},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        total_price = PriceList.calculate_total_price(price_list)
+
         data = request.data
         data.update({
             'service': pk,
             'user_id': request.user.pk,
+            'total_price': total_price,
         })
 
         serializer = RentSerializer(data=data)

@@ -184,9 +184,13 @@ export default {
         },
 
         send: function() {
-            const { $route: { params: { id }}, phone_number, address } = this;
+            const { $route: { params: { id }}, phone_number, address, prices_used } = this;
 
-            const payload = { phone_number, address };
+            const payload = {
+                phone_number,
+                address,
+                price_list: prices_used,
+            };
 
             axios.post(
                 `/api/services/services/${id}/rent_service/`,

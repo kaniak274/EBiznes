@@ -125,5 +125,9 @@ class PriceList(models.Model):
     name = models.CharField(_("Name"), max_length=100)
     price = models.DecimalField(_('Price'), max_digits=6, decimal_places=2)
 
+    @classmethod
+    def calculate_total_price(cls, price_list):
+        return cls.objects.filter(pk__in=price_list).aggregate(Sum('price'))
+
     def __str__(self):
         return self.name
