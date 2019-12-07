@@ -25,8 +25,9 @@
                     </b-table-column>
 
                     <b-table-column>
+                        <span v-if="shouldNotDisplayPayButton(props.row)">Nie dotyczy</span>
                         <b-button
-                            v-if="!props.row.is_paid"
+                            v-else-if="!props.row.is_paid"
                             type="is-primary"
                             tag="router-link"
                             :to="{
@@ -66,6 +67,12 @@ export default {
         ...mapState({
             pk: state => state.user.pk,
         }),
+    },
+
+    methods: {
+        shouldNotDisplayPayButton: function({ is_paid, status }) {
+            return status === 'WAITING_FOR_APPROVAL' || status === 'NOT_APPROVED';
+        }
     },
 
     async created() {
