@@ -12,8 +12,7 @@
             v-if="rents.length !== 0"
             detailed
             detail-key="pk"
-            :show-detail-icon="true"
-            @details-open="detailsOpened">
+            :show-detail-icon="true">
             <template slot-scope="props">
                 <b-table-column label="Użytkownik">
                     {{ props.row.user.first_name }} {{ props.row.user.last_name }}

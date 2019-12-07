@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
@@ -46,7 +48,7 @@ class ServiceViewset(viewsets.ModelViewSet):
     def rent_service(self, request, pk=None):
         service = self.get_object()
 
-        price_list = request.data.pop(price_list, [])
+        price_list = request.data.pop('price_list', [])
 
         if not price_list:
             return Response(
@@ -54,13 +56,13 @@ class ServiceViewset(viewsets.ModelViewSet):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        total_price = PriceList.calculate_total_price(price_list)
+        total_price = PriceList.calculate_total_price(price_list)['price__sum']
 
         data = request.data
         data.update({
             'service': pk,
             'user_id': request.user.pk,
-            'total_price': total_price,
+            'total_price': Decimal(total_price),
         })
 
         serializer = RentSerializer(data=data)
