@@ -23,6 +23,19 @@
                     <b-table-column field="modified" :label="$t('rent.dateLabel')">
                         {{ props.row.modified.split('T')[0] }}
                     </b-table-column>
+
+                    <b-table-column>
+                        <b-button
+                            v-if="!props.row.is_paid"
+                            type="is-primary"
+                            tag="router-link"
+                            :to="{
+                                name: 'payment',
+                                params: { id: `${props.row.pk}` }
+                            }"
+                        >Zapłać</b-button>
+                        <span v-else>Zapłacono</span>
+                    </b-table-column>
                 </template>
             </b-table>
             <div class="text-center" v-else>

@@ -220,6 +220,9 @@ class CreatePaymentAPIView(APIView):
                 user=rent.user
             )
 
+            rent.is_paid = True
+            rent.save()
+
             return Response({'redirectURI': response.url})
 
         return Response(

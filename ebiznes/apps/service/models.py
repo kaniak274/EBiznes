@@ -88,6 +88,7 @@ class Rent(TimeStampedModel):
     phone_number = models.CharField(_('Phone number'), max_length=20, null=True, blank=True)
     address = models.CharField(_('Address'), max_length=255, null=True, blank=True)
     total_price = models.DecimalField(_('Total price'), max_digits=10, decimal_places=2)
+    is_paid = models.BooleanField(_('Paid'), default=False)
 
     class Meta:
         verbose_name = _('rent')
@@ -112,7 +113,7 @@ class Rent(TimeStampedModel):
                 [self.user.email],
                 msg_ctx,
             )
-        elif self.status == DONE:
+        elif self.status == DONE and not self.is_paid:
             msg_ctx = {
                 'pk': self.pk
             }
