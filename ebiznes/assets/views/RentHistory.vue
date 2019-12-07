@@ -26,6 +26,7 @@
 
                     <b-table-column>
                         <span v-if="shouldNotDisplayPayButton(props.row)">Nie dotyczy</span>
+
                         <b-button
                             v-else-if="!props.row.is_paid"
                             type="is-primary"
@@ -35,6 +36,7 @@
                                 params: { id: `${props.row.pk}` }
                             }"
                         >Zapłać</b-button>
+
                         <span v-else>Zapłacono</span>
                     </b-table-column>
                 </template>

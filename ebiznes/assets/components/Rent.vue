@@ -1,7 +1,7 @@
 <template>
     <div class="rent-container">
         <b-button
-            v-if="authorizationGranted"
+            v-if="authorizationGranted && service.owner !== user.pk"
             @click="showPriceList = true"
             type="is-primary is-medium">
             {{ $t('service.rentBtn') }}
