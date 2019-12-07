@@ -1,7 +1,11 @@
 from decimal import Decimal
+import json
+import requests
+from urllib import parse
 
+from django.conf import settings
 from django.http import Http404
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from django_filters.rest_framework import DjangoFilterBackend
 
 from rest_framework import status, viewsets
@@ -11,7 +15,9 @@ from rest_framework.generics import (CreateAPIView, DestroyAPIView, ListAPIView,
     RetrieveAPIView, UpdateAPIView)
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
+from .choices import PENDING
 from .filters import *
 from .models import *
 from .serializers import *
@@ -168,3 +174,87 @@ class UpdateRentView(UpdateAPIView):
 
         if not obj.service.owner == request.user:
             raise PermissionDenied()
+
+
+class RentRetrieveView(RetrieveAPIView):
+    permission_classes = []
+    serializer_class = RentSerializer
+    queryset = Rent.objects.all()
+
+
+def payment_view(request, pk):
+    rent = get_object_or_404(Rent, pk=pk)
+
+    return render(request, 'base.html')
+
+
+class CreatePaymentAPIView(APIView):
+    permission_classes = []
+
+    def post(self, request, pk):
+        rent = get_object_or_404(Rent.objects.select_related('service', 'user'), pk=pk)
+
+        access_token = self._get_oauth_token()
+
+        if not access_token:
+            return Response(
+                'OAuth token nie może zostać pobrany. Skontaktuj się z administratorem.',
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        order_data = self._get_order_data(request, rent)
+        headers = {
+            'Authorization': 'Bearer {}'.format(access_token),
+            'Content-Type': 'application/json; UTF-8',
+        }
+
+        response = requests.post(settings.PAYU_ORDER_URL, order_data, headers=headers)
+
+        if response.status_code == status.HTTP_200_OK:
+            order_id = parse.parse_qs(parse.urlparse(response.url).query)['orderId'][0]
+
+            Order.objects.create(
+                status=PENDING,
+                totalAmount='{}'.format((rent.total_price + 1) * 100).split('.')[0],
+                order_id=order_id,
+                user=rent.user
+            )
+
+            return Response({'redirectURI': response.url})
+
+        return Response(
+            'Proszę spróbować ponownie za kilka minut',
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    def _get_oauth_token(self):
+        data = {
+            'grant_type': 'client_credentials',
+            'client_id': settings.PAYU_CLIENT_ID,
+            'client_secret': settings.PAYU_CLIENT_SECRET,
+        }
+
+        response = requests.post(settings.PAYU_OAUTH_URL, data)
+
+        if response.status_code == status.HTTP_200_OK:
+            return response.json()['access_token']
+        else:
+            return None
+
+    def _get_order_data(self, request, rent):
+        order_data = {
+            'customerIp': request.META.get('REMOTE_ADDR'),
+            'merchantPosId': settings.PAYU_POS_ID,
+            'description': 'Zapłata za usługę {}'.format(rent.service.name),
+            'currencyCode': 'PLN',
+            'totalAmount': '{}'.format((rent.total_price + 1) * 100).split('.')[0],
+            'products': [
+                {
+                    'name': 'Usługa {}'.format(rent.service.name),
+                    'unitPrice': '{}'.format((rent.total_price + 1) * 100).split('.')[0],
+                    'quantity': '1'
+                }
+            ]
+        }
+
+        return json.dumps(order_data)

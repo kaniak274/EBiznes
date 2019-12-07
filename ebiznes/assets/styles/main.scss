@@ -35,3 +35,14 @@
         color: white;
     }
 }
+
+#Payment {
+    button {
+        border: 0px;
+        height: 300px;
+        width: 300px;
+        background: url('http://static.payu.com/pl/standard/partners/buttons/payu_account_button_long_03.png');
+        background-repeat: no-repeat;
+        cursor: pointer;
+    }
+}

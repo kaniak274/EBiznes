@@ -19,6 +19,7 @@ import RentHistory from './views/RentHistory';
 import About from './views/About';
 import Contact from './views/Contact';
 import Rules from './views/Rules';
+import Payment from './views/Payment';
 
 Vue.use(Router)
 
@@ -102,6 +103,11 @@ const router = new Router({
             name: 'rent-history',
             component: RentHistory,
             beforeEnter: checkNotLogged,
+        },
+        {
+            path: '/payment/rent/:id/',
+            name: 'payment',
+            component: Payment,
         },
         {
             path: '/about/',

@@ -112,6 +112,17 @@ class Rent(TimeStampedModel):
                 [self.user.email],
                 msg_ctx,
             )
+        elif self.status == DONE:
+            msg_ctx = {
+                'pk': self.pk
+            }
+
+            send_email(
+                'Zaplata za usluge',
+                'service/email/payment.html',
+                [self.user.email],
+                msg_ctx,
+            )
 
         super().save(*args, **kwargs)
 
@@ -132,3 +143,10 @@ class PriceList(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Order(TimeStampedModel):
+    totalAmount = models.CharField(max_length=50)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    order_id = models.CharField(max_length=255)
+    status = models.CharField(max_length=40, choices=PAYMENT_CHOICES)

@@ -17,4 +17,6 @@ urlpatterns = [
     path('price-list/remove/<int:pk>/', views.RemovePriceListRecord.as_view(), name='remove-price-list'),
     path('price-list/update/<int:pk>/', views.UpdatePriceListRecord.as_view(), name='update-price-list'),
     path('rents/<int:pk>/', views.UpdateRentView.as_view(), name='update-rent'),
+    path('rents/retrieve/<int:pk>/', views.RentRetrieveView.as_view(), name='retrieve-rent'),
+    path('payment/create/<int:pk>/', views.CreatePaymentAPIView.as_view(), name='create-payment'),
 ] + router.urls

@@ -82,6 +82,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'ebiznes.wsgi.application'
 
 from .db import *
+from .payu import *
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/

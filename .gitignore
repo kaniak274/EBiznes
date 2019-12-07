@@ -116,3 +116,4 @@ db.py
 /ebiznes/uploads/*
 public/
 email.py
+payu.py

@@ -2,6 +2,7 @@ from django.urls import path
 
 from . import views
 
+from ebiznes.apps.service.views import payment_view
 
 urlpatterns = [
     path('', views.base_view),
@@ -19,4 +20,5 @@ urlpatterns = [
     path('about/', views.base_view),
     path('contact/', views.base_view),
     path('rules/', views.base_view),
+    path('payment/rent/<int:pk>/', payment_view, name='payment'),
 ]

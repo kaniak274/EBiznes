@@ -12,3 +12,13 @@ STATUS_CHOICES = (
     (APPROVED, _('Approved')),
     (DONE, _('Done')),
 )
+
+PENDING = 'PENDING'
+SUCCESS = 'SUCCESS'
+FAILURE = 'FAILURE'
+
+PAYMENT_CHOICES = (
+    (PENDING, 'W trakcie'),
+    (SUCCESS, 'Udane'),
+    (FAILURE, 'Nie udane'),
+)

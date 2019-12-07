@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Twoje zamowienie zostalo zakonczone</h1>
+    <p>Ponizej znajduje sie link do platnosci elektroniczne</p>
+    <p>Prosimy o jak najszybsza wplate</p>
+
+    <a href="{% url 'payment' pk=pk %}">Link do zaplaty</a>
+
+    <footer>
+        <p>Zespol ServiceRent</p>
+    </footer>
+</body>
+</html>
