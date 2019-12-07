@@ -76,9 +76,6 @@ class RentSerializer(serializers.ModelSerializer):
         fields = ('pk', 'created', 'service', 'user', 'modified',
             'status', 'phone_number', 'address', 'service_name', 'status_display',
             'total_price', 'user_id')
-        extra_kwargs = {
-            'service': {'write_only': True},
-        }
 
     def get_status_display(self, obj):
         return obj.get_status_display()

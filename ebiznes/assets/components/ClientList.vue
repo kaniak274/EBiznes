@@ -66,7 +66,7 @@
                                         <b-button
                                             type="is-primary"
                                             expanded
-                                            @click="change(props.row.pk)"
+                                            @click="change(props.row)"
                                         >Zmień</b-button>
                                     </div>
                                 </div>
@@ -93,8 +93,6 @@ export default {
             rents: [],
             next: null,
             pervious: null,
-            current_status: '',
-            current_price: '',
             options: [
                 {
                     'value': 'WAITING_FOR_APPROVAL',
@@ -121,8 +119,46 @@ export default {
     },
 
     methods: {
-        change: function(pk) {
-            
+        change: function(row) {
+            const {
+                pk,
+                address,
+                phone_number,
+                service,
+                user,
+                status,
+                total_price,
+            } = row;
+
+            const payload = {
+                address,
+                phone_number,
+                service,
+                user_id: user.pk,
+                status,
+                total_price,
+            };
+
+            axios.put(
+                `/api/services/rents/${pk}/`,
+                payload,
+                this.axiosConfig,
+            ).then(response => {
+                this.$buefy.snackbar.open({
+                    duration: 3000,
+                    message: 'Zmiany zostaly zapisane',
+                    type: 'is-success',
+                    position: 'is-top',
+                });
+            }).catch(error => {
+                const data = Object.values(error.response.data)
+                    .reduce((acc, item) => {
+                       acc += item.join(' ');
+                       return acc;
+                    }, '')
+                
+                this.$toastr.e(data)
+            })
         }
     },
 

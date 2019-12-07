@@ -156,3 +156,15 @@ class UpdatePriceListRecord(UpdateAPIView):
 
         if not obj.service.owner == request.user:
             raise PermissionDenied()
+
+
+class UpdateRentView(UpdateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = RentSerializer
+    queryset = Rent.objects.all()
+
+    def check_objectt_permissions(self, request, obj):
+        super().check_object_permissions(request, obj)
+
+        if not obj.service.owner == request.user:
+            raise PermissionDenied()
