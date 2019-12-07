@@ -2,7 +2,7 @@
     <div>
         <b-loading :active.sync="isLoading"/>
 
-        <p v-if="services.results.length == 0" class="text-center">
+        <p v-if="services.results == 0" class="text-center">
             Brak danych
         </p>
 
