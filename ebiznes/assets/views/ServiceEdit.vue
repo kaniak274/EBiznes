@@ -55,6 +55,8 @@
                                     v-model="newName"
                                     :placeholder="$t('service.priceListName')"/>
                             </b-field>
+
+                            <errors property="name"/>
                         </div>
                         <div class="col-3">
                             <b-field>
@@ -62,6 +64,8 @@
                                     v-model="newPrice"
                                     :placeholder="$t('service.priceListPrice')"/>
                             </b-field>
+
+                            <errors property="price"/>
                         </div>
                         <div class="col-1">
                             <b-button
@@ -81,7 +85,7 @@
 </template>
 <script>
 import axios from 'axios';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapState } from 'vuex';
 
 export default {
     name: 'ServiceEdit',
@@ -169,12 +173,9 @@ export default {
                 this.newPrice = '';
                 this.newName = '';
             }).catch(error => {
-                const { response: { data: { price = [], service = [], name = []} }} = error;
+                const { response: { data }} = error;
 
-                price.push.apply(price, service);
-                price.push.apply(price, name);
-
-                this.$toastr.e(price.join(' '));
+                this.$store.commit('setError', data);
             });
         },
     },

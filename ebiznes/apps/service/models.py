@@ -143,6 +143,10 @@ class PriceList(models.Model):
     name = models.CharField(_("Name"), max_length=100)
     price = models.DecimalField(_('Price'), max_digits=6, decimal_places=2)
 
+    class Meta:
+        verbose_name = _('price')
+        verbose_name_plural = _('price')
+
     @classmethod
     def calculate_total_price(cls, price_list):
         return cls.objects.filter(pk__in=price_list).aggregate(Sum('price'))
@@ -156,3 +160,7 @@ class Order(TimeStampedModel):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     order_id = models.CharField(max_length=255)
     status = models.CharField(max_length=40, choices=PAYMENT_CHOICES)
+
+    class Meta:
+        verbose_name = _('order')
+        verbose_name_plural = _('order')
