@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 from django.contrib.auth import get_user_model
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator, RegexValidator
 from django.db import models
 from django.db.models import Sum
 from django.utils.translation import gettext as _
@@ -23,6 +23,9 @@ class Profession(models.Model):
         return self.name
 
 
+digits_only = RegexValidator(r'^[0-9]*$', _('Only digits are allowed.'))
+
+
 class Service(TimeStampedModel):
     owner = models.ForeignKey(get_user_model(), related_name='services',
         on_delete=models.CASCADE, verbose_name=_('Owner'))
@@ -35,6 +38,8 @@ class Service(TimeStampedModel):
     service_logo = models.ImageField(_('Service logo'), upload_to="logos/", max_length=255, null=True, blank=True)
     street = models.CharField(_('Street'), max_length=255, blank=True, null=True)
     phone_number = models.CharField(_('Phone number'), max_length=30, blank=True, null=True)
+    account_number = models.CharField(_('Account number'), max_length=26,
+        null=True, blank=True, validators=[digits_only])
 
     class Meta:
         verbose_name = _('service')

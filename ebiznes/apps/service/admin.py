@@ -4,7 +4,7 @@ from .models import *
 
 
 class ServiceAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'owner', 'city', 'profession',)
+    list_display = ('__str__', 'owner', 'city', 'profession', 'account_number')
 
 
 class RatingAdmin(admin.ModelAdmin):

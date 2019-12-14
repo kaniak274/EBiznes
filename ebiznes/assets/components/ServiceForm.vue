@@ -13,7 +13,8 @@
                 <div class="row">
                     <div class="col-4 mx-auto">
                         <b-field
-                            :type="{ 'is-danger': hasFieldError('name') }">
+                            :type="{ 'is-danger': hasFieldError('name') }"
+                            class="mb-4">
                             <b-input
                                 :placeholder="$t('service.nameLabel')"
                                 v-model="name"/>
@@ -22,7 +23,8 @@
                         <errors property='name'/>
 
                         <b-field
-                            :type="{ 'is-danger': hasFieldError('description') }">
+                            :type="{ 'is-danger': hasFieldError('description') }"
+                            class="mb-4">
                             <b-input
                                 :placeholder="$t('service.descriptionLabel')"
                                 type="textarea"
@@ -32,7 +34,8 @@
                         <errors property='description'/>
 
                         <b-field
-                            :type="{ 'is-danger': hasFieldError('city') }">
+                            :type="{ 'is-danger': hasFieldError('city') }"
+                            style="margin-bottom: 2.3em;">
                             <b-input
                                 :placeholder="$t('service.cityLabel')"
                                 v-model="city"/>
@@ -108,6 +111,15 @@
                         </b-field>
 
                         <errors property="phone_number"/>
+
+                        <b-field
+                           :type="{ 'is-danger': hasFieldError('account_number') }">
+                            <b-input
+                                placeholder="Numer konta"
+                                v-model="accountNumber"/>
+                        </b-field>
+
+                        <errors property="account_number"/>
                     </div>
                 </div>
             </form>
@@ -133,6 +145,7 @@ export default {
              phoneNumber: '',
              street: '',
              imageURL: null,
+             accountNumber: '',
          }
     },
 
@@ -169,6 +182,7 @@ export default {
                 logo,
                 phoneNumber,
                 street,
+                accountNumber
             } = this;
 
             let formData = new FormData();
@@ -183,6 +197,7 @@ export default {
             formData.append('phone_number', phoneNumber);
             formData.append('city', city);
             formData.append('street', street);
+            formData.append('account_number', accountNumber);
 
             return formData;
         },
@@ -237,6 +252,8 @@ export default {
                 this.street = street;
                 this.phoneNumber = phone_number;
                 this.imageURL = service_logo;
+                this.accountNumber = data.account_number;
+                console.log(data)
                 var logo = this.logo
 
                 var request = new XMLHttpRequest();

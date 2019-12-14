@@ -48,9 +48,10 @@ class ServiceSerializer(serializers.ModelSerializer):
         model = Service
         fields = ('pk', 'name', 'description', 'owner', 'profession',
             'profession_id', 'city', 'street', 'service_logo', 'phone_number',
-            'created', 'rate')
+            'created', 'rate', 'account_number')
         extra_kwargs = {
             'owner': {'required': False},
+            'account_number': {'required': True, 'allow_null': False, 'min_length': 26}
         }
 
 
@@ -61,7 +62,7 @@ class DetailServiceSerializer(ServiceSerializer):
     class Meta(ServiceSerializer.Meta):
         fields = ('pk', 'name', 'description', 'owner', 'profession',
             'profession_id', 'city', 'street', 'service_logo', 'phone_number',
-            'created', 'rate', 'random_ratings', 'price_list')
+            'created', 'rate', 'random_ratings', 'price_list', 'account_number')
 
 
 class RentSerializer(serializers.ModelSerializer):
